@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    // "target": "es2022",
+    // "lib": ["dom", "dom.iterable", "esnext"],
+
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/components/ModalHandler.jsx",
+    "src/app/components/ModalHandler.tsx.backup",
+    "src/app/[slug]/page.jsx.backup.last",
+    "src/app/[slug]/page.tsx.backup",
+    "src/app/[slug]/page-revamp.backup",
+    "src/app/[slug]/page.tsx.bachup",
+    "src/app/mentions-legales/page.jsx",
+    "src/app/components/ImagePlaceHolder.tsx.backup",
+    "src/app/components/NavBar.jsx",
+    "src/app/a-propos/page.jsx",
+    "src/app/le-livre/page.jsx",
+    "src/app/providers.tsx",
+    "src/app/components/ImagePlaceHolder.jsx",
+    "src/app/layout.tsx",
+    "src/app/page.jsx",
+    "src/app/components/YearsSlider.jsx"
+  ],
+  "exclude": ["node_modules"]
+}
