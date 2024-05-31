@@ -1,15 +1,15 @@
 'use client'
-import { useState, useEffect, useMemo, useContext } from 'react'
-import microfictionsContext from '../contexts/microfictions.context'
+import { useEffect, useMemo } from 'react'
+import {useMicrofictionsContext} from '@/contexts/microfictions.context'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadAll } from '@tsparticles/all'
 
 const Confettis = (props) => {
   //   const [initConfettis, setInitConfettis] = useState(false)
+  // let { isShowConfettis, InitConfettis, setInitConfettis, modalAttr } = useContext(microfictionsContext)
   let { isShowConfettis, InitConfettis, setInitConfettis, modalAttr } =
-    useContext(microfictionsContext)
-  const confettisContext = useContext(microfictionsContext)
-  // console.log('confettisContext !!! => ', confettisContext)
+    useMicrofictionsContext()
+
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadAll(engine).then(() => {

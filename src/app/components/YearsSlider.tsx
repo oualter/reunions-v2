@@ -1,12 +1,14 @@
 'use client'
-import { useContext, useState, useRef, useLayoutEffect } from 'react'
-import microfictionsContext from '../contexts/microfictions.context'
-import { Slider } from './ui/slider'
+import { useMicrofictionsContext } from '@/contexts/microfictions.context'
+import { Slider } from '@/components/ui/slider'
 
-const YearsSlider = ({ className, ...props }) => {
-  const yearsContext = useContext(microfictionsContext)
-  const { defaultpins, handleDisplayPins, selectedMicrofictions } = yearsContext
-  const yearsArr = []
+const YearsSlider = () => {
+  // const yearsContext = useContext(microfictionsContext)
+  const yearsContext = useMicrofictionsContext()
+  // const { defaultpins, handleDisplayPins, selectedMicrofictions } = yearsContext
+  console.log('useMicrofictionsContext() => ', useMicrofictionsContext())
+  const { defaultpins, handleDisplayPins } = useMicrofictionsContext()
+  const yearsArr: [] = []
   let yearsArrToSlider
   defaultpins.map((elt) => {
     const { Date } = elt
@@ -41,12 +43,12 @@ const YearsSlider = ({ className, ...props }) => {
   return (
     <div className="slider-wrapper fixed hidden sm:block sm:h-[50%] lg:h-[60vh] xl:h-[75vh] w-[80px] top-[140px] z-10000">
       <Slider
-        label="Années"
+        // label="Années"
         defaultValue={[maxYearSlider]}
         min={minYear}
         max={maxYearSlider + 2}
         className="h-full"
-        onValueCommit={(event) => {
+        onValueCommit={(event: number[]) => {
           handleDisplayPins(event)
         }}
       />

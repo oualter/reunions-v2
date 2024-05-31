@@ -1,33 +1,63 @@
 'use client'
-import { createContext, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { type PinType } from '@/typescript/types'
 
-const MicrofictionsContext = createContext(null)
+type MicrofictionsContextType = {
+  // pins: string[] | null
+  pins: PinType[]
+  defaultpins: PinType[] | null
+  openModal: boolean
+  closeModal: boolean
+  isOpen: boolean
+  setIsOpen: (value: React.SetStateAction<boolean>) => void
+  modalAttr: {} | null
+  GingkoBiloba: boolean
+  isShowConfettis: boolean
+  initConfettis: boolean
+  setInitConfettis: React.Dispatch<React.SetStateAction<boolean>>
+  handleDisplayPins: () => void
+  selectedMicrofictions: {}
+  unselectedMicrofictions: {}
+  // reselectedMicrofictions,
+  dateFilter: string[]
+}
+type MFContextPropsType = {
+  value: any
+  children: React.ReactNode
+}
 
-export default MicrofictionsContext
+const MicrofictionsContext = createContext<MicrofictionsContextType | null>(
+  null
+)
 
 // variables utiles pour les effets d'affichage des épingles
 let counterforMF = 0
 const filteredMFArchive = []
 
-const MicrofictionsContextProvider = (props) => {
-  // console.log('context props => ', props)
+const MicrofictionsContextProvider = (props: MFContextPropsType) => {
+  // console.log('MicrofictionsContextProvider props => ', props)
   const router = useRouter()
   let [isOpen, setIsOpen] = useState(false)
-  let [modalAttr, setModalAttr] = useState('')
+  let [modalAttr, setModalAttr] = useState({})
   let [GingkoBiloba, setGingkoBiloba] = useState(false)
   let [isShowConfettis, setIsShowConfettis] = useState(false)
   let [initConfettis, setInitConfettis] = useState(false)
   const [selectedMicrofictions, setSelectedMicrofictions] = useState([])
   const [unselectedMicrofictions, setUnselectedMicrofictions] = useState([])
-  const [reselectedMicrofictions, setReselectedMicrofictions] = useState([])
+  // const [reselectedMicrofictions, setReselectedMicrofictions] = useState([])
   const [dateFilter, setDateFilter] = useState(null)
 
   const mfArray = props.value.microfictionsFiltered
     ? props.value.microfictionsFiltered
     : props.value.microfictions
 
-  const openModal = (e, value, slug) => {
+  console.log('mfArray => ', mfArray)
+  const openModal = (
+    e: React.SyntheticEvent<HTMLInputElement>,
+    value: unknown,
+    slug: string
+  ) => {
     const customParamDate = e.target.attributes
       .getNamedItem('datadate')
       .value.replaceAll('/', '-')
@@ -36,10 +66,10 @@ const MicrofictionsContextProvider = (props) => {
     }
     setModalAttr(e.target.attributes)
     setIsOpen(true)
-    const tempConfetti = value.GingkoBiloba
-    setIsShowConfettis(tempConfetti)
+
+    setIsShowConfettis(value.GingkoBiloba)
   }
-  const closeModal = (slug) => {
+  const closeModal = (slug: string) => {
     if (slug) {
       router.push('/' + slug)
     }
@@ -48,7 +78,8 @@ const MicrofictionsContextProvider = (props) => {
   }
 
   // filtre les épingles inférieures aux dates sélectionnées
-  const handleDisplayPins = (event) => {
+  const handleDisplayPins = (event: string[]) => {
+    console.log('handleDisplayPins event => ', event)
     setDateFilter(event)
     const filteredMF = mfArray.filter((elt) => {
       let eltDate = parseInt(elt.Date.split('/')[2])
@@ -83,13 +114,24 @@ const MicrofictionsContextProvider = (props) => {
         handleDisplayPins,
         selectedMicrofictions: mfArray,
         unselectedMicrofictions,
-        reselectedMicrofictions,
+        // reselectedMicrofictions,
         dateFilter,
       }}
     >
       <>{props.children}</>
+      {/* <>{children}</> */}
     </MicrofictionsContext.Provider>
   )
+}
+
+export function useMicrofictionsContext() {
+  const context = useContext(MicrofictionsContext)
+  if (!context) {
+    throw new Error(
+      'useMicrofictionsContext must be used within a MicrofictionsContextProvider'
+    )
+    return context
+  }
 }
 
 export { MicrofictionsContextProvider }

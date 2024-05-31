@@ -1,26 +1,37 @@
 'use client'
-import { useContext, useRef } from 'react'
+import { useRef } from 'react'
+import { useMicrofictionsContext } from '@/contexts/microfictions.context'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from './ui/tooltip'
-import microfictionsContext from '../contexts/microfictions.context'
+} from '@/components/ui/tooltip'
 
-const Pin = (props) => {
-  const {
-    coordX,
-    coordY,
-    Date,
-    Heure,
-    Texte_mf,
-    GingkoBiloba,
-    dateFilter,
-    slug
-  } = props
+type PinPropsType = {
+  coordX: number
+  coordY: number
+  Date: string
+  Heure: string
+  Texte_mf: string[]
+  GingkoBiloba: boolean
+  dateFilter: number[]
+  slug: string
+}
+
+const Pin = ({
+  coordX,
+  coordY,
+  Date,
+  Heure,
+  Texte_mf,
+  GingkoBiloba,
+  dateFilter,
+  slug,
+}: PinPropsType) => {
   // console.log('props => ', props)
-  const { openModal } = useContext(microfictionsContext)
+  // const { openModal } = useContext(microfictionsContext)
+  const { openModal } = useMicrofictionsContext()
   const pinClassName = useRef(true)
   const isclassNameToRemove = pinClassName.current.className
     ? pinClassName.current.className.includes('toRemove')

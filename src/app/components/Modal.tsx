@@ -1,10 +1,11 @@
 'use client'
-import { useContext, Fragment } from 'react'
-import microfictionsContext from '../contexts/microfictions.context'
+import { Fragment } from 'react'
+import { useMicrofictionsContext } from '@/contexts/microfictions.context'
 import { Dialog, Transition } from '@headlessui/react'
 
-const Modal = (props) => {
-  const { closeModal, isOpen, modalAttr } = useContext(microfictionsContext)
+const Modal = () => {
+  // const { closeModal, isOpen, modalAttr } = useContext(microfictionsContext)
+  const { closeModal, isOpen, modalAttr } = useMicrofictionsContext()
   if (!modalAttr) {
     return false
   }

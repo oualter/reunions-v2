@@ -56,12 +56,12 @@ module.exports = {
       {
         // replace remote patterns when production
         // patterns for production just below
-        protocol: 'https',
-        hostname: 'strapi-reunion-pingenerator.onrender.com',
+        // protocol: 'https',
+        // hostname: 'strapi-reunion-pingenerator.onrender.com',
         // patterns for local dev just below
-        // protocol: 'http',
-        // hostname: '127.0.0.1',
-        // port: '1337',
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '1337',
         // keep line below for all environments
         pathname: '/uploads/**',
       },

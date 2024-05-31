@@ -1,14 +1,15 @@
 'use client'
-import { useContext, useEffect, useRef } from 'react'
-import microfictionsContext from '../contexts/microfictions.context'
-import Pin from './Pin'
+import { useEffect, useRef } from 'react'
+import { useMicrofictionsContext } from '@/contexts/microfictions.context'
+import Pin from '@/components/Pin'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 
-const PinsList = (props) => {
+const PinsList = () => {
   const animContainer = useRef(true)
-  const { pins, unselectedMicrofictions, dateFilter } =
-    useContext(microfictionsContext)
+  // const { pins, unselectedMicrofictions, dateFilter } = useContext(microfictionsContext)
+  console.log('useMicrofictionsContext() => ', useMicrofictionsContext())
+  const { pins, unselectedMicrofictions, dateFilter } = useMicrofictionsContext()
 
   const zeroOneArray1 = Math.round(Math.random())
   const zeroOneArray2 = Math.round(Math.random())

@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "target": "es5",
+    // "useDefineForClassFields": true,
+    // "lib": ["ES2020", "DOM", "DOM.Iterable"],
     // "target": "es2022",
-    // "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "dom.iterable", "esnext"],
 
     "allowJs": true,
     "skipLibCheck": true,
@@ -23,8 +23,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/app/*"]
     }
+    // "baseUrl": "src/*",
+    // "paths": {
+    //   "@/components/*": ["components/*"]
+    // }
   },
   "include": [
     "next-env.d.ts",
@@ -39,14 +43,14 @@
     "src/app/[slug]/page.tsx.bachup",
     "src/app/mentions-legales/page.jsx",
     "src/app/components/ImagePlaceHolder.tsx.backup",
-    "src/app/components/NavBar.jsx",
+    "src/app/components/NavBar.tsx",
     "src/app/a-propos/page.jsx",
     "src/app/le-livre/page.jsx",
     "src/app/providers.tsx",
-    "src/app/components/ImagePlaceHolder.jsx",
+    "src/app/components/ImagePlaceHolder.tsx",
     "src/app/layout.tsx",
-    "src/app/page.jsx",
-    "src/app/components/YearsSlider.jsx"
+    "src/app/page.tsx",
+    "src/app/components/YearsSlider.tsx"
   ],
   "exclude": ["node_modules"]
 }
