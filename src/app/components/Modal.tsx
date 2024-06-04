@@ -6,9 +6,11 @@ import { Dialog, Transition } from '@headlessui/react'
 const Modal = () => {
   // const { closeModal, isOpen, modalAttr } = useContext(microfictionsContext)
   const { closeModal, isOpen, modalAttr } = useMicrofictionsContext()
+  console.log('modalAttr => ', modalAttr)
   if (!modalAttr) {
     return false
   }
+  console.log('modalAttr useMicrofictionsContext => ', useMicrofictionsContext())
   const mfDate = modalAttr.getNamedItem('datadate').value
   const mfHour = modalAttr.getNamedItem('datahour').value
   let MFDay = mfDate.split('/')[0]

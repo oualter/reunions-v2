@@ -8,16 +8,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 
-type PinPropsType = {
-  coordX: number
-  coordY: number
-  Date: string
-  Heure: string
-  Texte_mf: string[]
-  GingkoBiloba: boolean
-  dateFilter: number[]
-  slug: string
-}
+import { type PinPropsType } from '@/typescript/types'
 
 const Pin = ({
   coordX,

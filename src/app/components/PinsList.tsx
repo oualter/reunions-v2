@@ -8,7 +8,7 @@ import { useGSAP } from '@gsap/react'
 const PinsList = () => {
   const animContainer = useRef(true)
   // const { pins, unselectedMicrofictions, dateFilter } = useContext(microfictionsContext)
-  console.log('useMicrofictionsContext() => ', useMicrofictionsContext())
+  // console.log('useMicrofictionsContext() => ', useMicrofictionsContext())
   const { pins, unselectedMicrofictions, dateFilter } = useMicrofictionsContext()
 
   const zeroOneArray1 = Math.round(Math.random())
@@ -73,33 +73,14 @@ const PinsList = () => {
 
   useEffect(() => {
     const pinDisplayTL = gsap.timeline()
-    // pinDisplayTL.to('.toDisplay', {
-    //   opacity: 1,
-    //   scale: 5,
-    //   duration: 0.2,
-    //   ease: 'expo',
-    //   delay: 0.1,
-    //   stagger: {
-    //     each: 0.08,
-    //   },
-    // })
     pinDisplayTL.from('.toDisplay', {
       opacity: 0,
       scale: 0,
       duration: 0.05,
       ease: 'expo',
       delay: 0.1,
-      // stagger: {
-      //   each: 0.08,
-      // },
     })
-    // pinDisplayTL.to('.toDisplay', {
-    //   opacity: 1,
-    //   scale: 1,
-    //   duration: 0.2,
-    //   ease: 'expo',
-    //   delay: 0.6,
-    // })
+
     pinDisplayTL.to('.toDisplay', {
       opacity: 1,
       scale: 5,

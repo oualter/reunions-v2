@@ -1,7 +1,7 @@
 import 'server-only'
 import qs from 'qs'
 import { notFound } from 'next/navigation'
-import { type PinType } from '@/typescript/types'
+import type { PinType, PinAttributesType } from '@/typescript/types'
 
 export const CACHE_TAG_REUNION = 'reunions'
 const CMS_URL = process.env.CMS_URL
@@ -19,11 +19,11 @@ export async function GetMicroFictions() {
     ],
     sort: ['ordre_de_lecture:asc'],
   })
+
   return {
     microfictions: data.map((item: PinType) => {
-      console.log('item => ', item)
       const { attributes, id } = item
-      const {
+      let {
         createdAt,
         Date,
         Heure,
@@ -31,8 +31,8 @@ export async function GetMicroFictions() {
         pingenerator,
         GingkoBiloba,
         Texte_microfiction,
-      } = attributes
-      console.log('attributes => ', attributes)
+      }: PinAttributesType = attributes
+
       return {
         id,
         createdAt: createdAt,
@@ -42,15 +42,14 @@ export async function GetMicroFictions() {
         pingenerator: pingenerator,
         GingkoBiloba: GingkoBiloba,
         Texte_microfiction: Texte_microfiction.map(
-          (elt) => elt.children[0].text
+          (elt: any) => elt.children[0].text
         ),
-        // Texte_microfiction: attributes.Texte_microfiction,
       }
     }),
   }
 }
 
-async function fetchMF(parameters) {
+async function fetchMF(parameters:string) {
   const url =
     `${CMS_URL}/api/microfictions?` + (parameters, { encodeValuesOnly: true })
   const response = await fetch(url, {

@@ -6,7 +6,7 @@ const YearsSlider = () => {
   // const yearsContext = useContext(microfictionsContext)
   const yearsContext = useMicrofictionsContext()
   // const { defaultpins, handleDisplayPins, selectedMicrofictions } = yearsContext
-  console.log('useMicrofictionsContext() => ', useMicrofictionsContext())
+  // console.log('useMicrofictionsContext() => ', useMicrofictionsContext())
   const { defaultpins, handleDisplayPins } = useMicrofictionsContext()
   const yearsArr: [] = []
   let yearsArrToSlider

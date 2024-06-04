@@ -23,7 +23,7 @@ type MicrofictionsContextType = {
   dateFilter: string[]
 }
 type MFContextPropsType = {
-  value: any
+  value: unknown
   children: React.ReactNode
 }
 
@@ -39,7 +39,7 @@ const MicrofictionsContextProvider = (props: MFContextPropsType) => {
   // console.log('MicrofictionsContextProvider props => ', props)
   const router = useRouter()
   let [isOpen, setIsOpen] = useState(false)
-  let [modalAttr, setModalAttr] = useState({})
+  let [modalAttr, setModalAttr] = useState(null)
   let [GingkoBiloba, setGingkoBiloba] = useState(false)
   let [isShowConfettis, setIsShowConfettis] = useState(false)
   let [initConfettis, setInitConfettis] = useState(false)
@@ -52,12 +52,14 @@ const MicrofictionsContextProvider = (props: MFContextPropsType) => {
     ? props.value.microfictionsFiltered
     : props.value.microfictions
 
-  console.log('mfArray => ', mfArray)
+  // console.log('mfArray => ', mfArray)
   const openModal = (
     e: React.SyntheticEvent<HTMLInputElement>,
     value: unknown,
     slug: string
   ) => {
+    console.log('e.target => ', e.target)
+    // const customParamDate = e.target.attributes
     const customParamDate = e.target.attributes
       .getNamedItem('datadate')
       .value.replaceAll('/', '-')
@@ -130,8 +132,8 @@ export function useMicrofictionsContext() {
     throw new Error(
       'useMicrofictionsContext must be used within a MicrofictionsContextProvider'
     )
-    return context
   }
+  return context
 }
 
 export { MicrofictionsContextProvider }
