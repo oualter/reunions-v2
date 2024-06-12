@@ -4,30 +4,13 @@ import { Fragment } from 'react'
 import { useMicrofictionsContext } from '@/contexts/microfictions.context'
 import { Dialog, Transition } from '@headlessui/react'
 
-// type ModalAttrType = {
-//   getNamedItem(attribute: string)
-// }
-
-// type MicrofictionsContextType = {
-//   closeModal: boolean
-//   isOpen: boolean
-//   modalAttr: NamedNodeMap
-// }
-
 const Modal = () => {
-  // const { closeModal, isOpen, modalAttr } = useContext(microfictionsContext)
   const { closeModal, isOpen, modalAttr } =
     useMicrofictionsContext()
 
   if (!modalAttr) {
     return false
   }
-  // console.log(
-  //   'modalAttr.getNamedItem("datadate") => ',
-  //   typeof modalAttr.getNamedItem('datadate').value
-  // )
-  // console.log('modalAttr typeof => ', typeof modalAttr)
-  // console.log('modalAttr["datadate"] => ', modalAttr['datadate'].value)
   const mfDate = modalAttr.getNamedItem('data-date').value
   const mfHour = modalAttr.getNamedItem('data-hour').value
   let MFDay = mfDate.split('/')[0]

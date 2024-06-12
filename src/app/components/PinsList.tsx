@@ -24,7 +24,7 @@ const PinsList = () => {
     }
     acc[curr.Date].push(curr.Texte_microfiction)
     if (acc[curr.Date].length > 0) {
-      acc[curr.Date].push(['<hr/>'])
+      acc[curr.Date].push(['<br/><br/>'])
     }
     return acc
   }, {})

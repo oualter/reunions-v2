@@ -35,6 +35,12 @@ type MFContextPropsType = {
 //   ? props.value.microfictionsFiltered
 //   : props.value.microfictions
 
+// type TypeOpenModalAttr = {
+//   e: React.SyntheticEvent<HTMLDivElement, Event>
+//   value: boolean
+//   slug: string
+// }
+
 const MicrofictionsContext = createContext<MicrofictionsContextType | null>(
   null
 )
@@ -67,25 +73,7 @@ const MicrofictionsContextProvider = (props: MFContextPropsType) => {
     : props.value.microfictions
 
   // console.log('mfArray => ', mfArray)
-  const openModal = (
-    e,
-    // e: React.SyntheticEvent<HTMLDivElement>,
-    // e: { target: React.SyntheticEvent<HTMLDivElement> | null },
-    // e: {
-    //   target?: {
-    //     dataset?: {
-    //       date?: string
-    //     }
-    //     attributes?: {}
-    //   }
-    // },
-    // value: {
-    //   GingkoBiloba: boolean
-    // },
-    value,
-    // slug: string
-    slug
-  ) => {
+  const openModal = (e, value, slug): void => {
     // const customParamDate = e.target.attributes
     const customParamDate = e.target.dataset.date.replaceAll('/', '-')
     if (slug) {
@@ -94,8 +82,8 @@ const MicrofictionsContextProvider = (props: MFContextPropsType) => {
     setModalAttr(e.target.attributes)
     // setModalAttr(e.target?.dataset)
     setIsOpen(true)
-
-    setIsShowConfettis(value.GingkoBiloba)
+    console.log('value.GingkoBiloba => ', value)
+    setIsShowConfettis(value)
   }
   const closeModal = (slug: string) => {
     if (slug) {
