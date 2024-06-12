@@ -1,50 +1,14 @@
 'use client'
 import { useRef } from 'react'
 import { useMicrofictionsContext } from '@/contexts/microfictions.context'
-// import {
-//   TooltipProviderProps,
-//   TooltipProps,
-//   TooltipTriggerProps,
-//   TooltipContentProps,
-// } from '@radix-ui/react-tooltip'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-  // type TooltipContentProps,
 } from '@/components/ui/tooltip'
 
 import { type PinPropsType } from '@/typescript/types'
-// import { PropsWithChildren } from 'react'
-
-// type SuperTooltipContentProps = TooltipContentProps & {
-//   className: string
-// }
-// const TooltipContent: SuperTooltipContentProps
-// interface SuperTooltipProps extends TooltipProps {
-//   className: string
-//   children: React.ReactNode
-// }
-// export interface TooltipProps extends PropsWithChildren {}
-
-// interface SuperTooltipProviderProps extends TooltipProviderProps {
-//   className: string
-//   children: React.ReactNode
-// }
-// export interface TooltipProviderProps extends PropsWithChildren {}
-
-// interface SuperTooltipTriggerProps extends TooltipTriggerProps {
-//   className: string
-//   children: React.ReactNode
-// }
-// export interface TooltipTriggerProps extends PropsWithChildren {}
-
-// interface SuperTooltipContentProps extends TooltipContentProps {
-//   className: string
-//   children: React.ReactNode
-// }
-// export interface TooltipContentProps extends PropsWithChildren {}
 
 const Pin = ({
   coordX,
@@ -56,8 +20,6 @@ const Pin = ({
   dateFilter,
   slug,
 }: PinPropsType) => {
-  // console.log('GingkoBiloba => ', GingkoBiloba)
-  // const { openModal } = useContext(microfictionsContext)
   const { openModal } = useMicrofictionsContext()
   const pinClassName = useRef<HTMLDivElement>(null)
 
