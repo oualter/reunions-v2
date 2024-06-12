@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { useState, useRef,  useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 import * as SliderPrimitive from '@radix-ui/react-slider'
 
@@ -9,7 +9,11 @@ import { cn } from '../../../lib/utils.ts'
 
 const Slider = React.forwardRef(({ className, ...props }, ref) => {
   // const value = props.value || props.defaultValue
-  const [value, setValue] = useState(props.defaultValue[0])
+  // type props.defaultValue = number[]
+
+  // console.log('slider jsx props => ', props)
+  // const [value, setValue] = useState(props.defaultValue[0])
+  const [value, setValue] = useState((props.value) || props.defaultValue)
   const [offset, setOffset] = useState(null)
   const ThumbRef = useRef(null)
 
@@ -35,6 +39,7 @@ const Slider = React.forwardRef(({ className, ...props }, ref) => {
 
   return (
     <SliderPrimitive.Root
+      asChild
       id="sliderRoot"
       ref={ref}
       className={cn('touch-none select-none', className)}
@@ -45,12 +50,17 @@ const Slider = React.forwardRef(({ className, ...props }, ref) => {
       {...props}
     >
       <SliderPrimitive.Track
+        asChild
         className="overflow-hidden rounded-full bg-secondary"
         id="sliderTrack"
       >
-        <SliderPrimitive.Range id="sliderRange" className="bg-primary" />
+        <SliderPrimitive.Range
+          asChild
+          id="sliderRange"
+          className="bg-primary"
+        />
       </SliderPrimitive.Track>
-      <SliderPrimitive.Thumb id="sliderThumb">
+      <SliderPrimitive.Thumb asChild id="sliderThumb">
         <div style={{ transform: `translateX(${offset}px)` }}>
           <div
             className="absolute ease-in-out duration-150 transition group-active:opacity-100 -translate-y-1 -translate-x-[5rem] px-5 py-2 bg-white text-center rounded-full text-black whitespace-nowrap text-xs font-bold shadow-md"
@@ -59,7 +69,6 @@ const Slider = React.forwardRef(({ className, ...props }, ref) => {
             {value}
           </div>
         </div>
-        {/* <div>TEST</div> */}
       </SliderPrimitive.Thumb>
     </SliderPrimitive.Root>
   )

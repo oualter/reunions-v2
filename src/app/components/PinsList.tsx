@@ -6,10 +6,10 @@ import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 const PinsList = () => {
-  const animContainer = useRef(true)
-  // const { pins, unselectedMicrofictions, dateFilter } = useContext(microfictionsContext)
-  // console.log('useMicrofictionsContext() => ', useMicrofictionsContext())
-  const { pins, unselectedMicrofictions, dateFilter } = useMicrofictionsContext()
+  const animContainer = useRef<HTMLDivElement>(null)
+  // const { pins, unselectedMicrofictions, dateFilter } =
+  const { pins, unselectedMicrofictions } =
+    useMicrofictionsContext()
 
   const zeroOneArray1 = Math.round(Math.random())
   const zeroOneArray2 = Math.round(Math.random())
@@ -68,7 +68,7 @@ const PinsList = () => {
       ease: 'expo',
       delay: 0.4,
     })
-  // }, [pins])
+    // }, [pins])
   }, [unselectedMicrofictions])
 
   useEffect(() => {
@@ -113,15 +113,15 @@ const PinsList = () => {
             let Texte_mf = pindReducedDate[Date]
             Texte_mf.pop()
             Texte_mf = Texte_mf.join('')
-            const posX = pingenerator ? pingenerator.split(',')[0] : ''
-            const posY = pingenerator ? pingenerator.split(',')[1] : ''
+            const posX = pingenerator ? parseInt(pingenerator.split(',')[0]) : 0
+            const posY = pingenerator ? parseInt(pingenerator.split(',')[1]) : 0
             return (
               <Pin
                 key={posX * posX * id}
                 coordX={posX}
                 coordY={posY}
                 Texte_mf={Texte_mf}
-                dateFilter={dateFilter}
+                // dateFilter={dateFilter}
                 {...elt}
               />
             )

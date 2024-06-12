@@ -1,14 +1,50 @@
 'use client'
 import { useRef } from 'react'
 import { useMicrofictionsContext } from '@/contexts/microfictions.context'
+// import {
+//   TooltipProviderProps,
+//   TooltipProps,
+//   TooltipTriggerProps,
+//   TooltipContentProps,
+// } from '@radix-ui/react-tooltip'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
+  // type TooltipContentProps,
 } from '@/components/ui/tooltip'
 
 import { type PinPropsType } from '@/typescript/types'
+// import { PropsWithChildren } from 'react'
+
+// type SuperTooltipContentProps = TooltipContentProps & {
+//   className: string
+// }
+// const TooltipContent: SuperTooltipContentProps
+// interface SuperTooltipProps extends TooltipProps {
+//   className: string
+//   children: React.ReactNode
+// }
+// export interface TooltipProps extends PropsWithChildren {}
+
+// interface SuperTooltipProviderProps extends TooltipProviderProps {
+//   className: string
+//   children: React.ReactNode
+// }
+// export interface TooltipProviderProps extends PropsWithChildren {}
+
+// interface SuperTooltipTriggerProps extends TooltipTriggerProps {
+//   className: string
+//   children: React.ReactNode
+// }
+// export interface TooltipTriggerProps extends PropsWithChildren {}
+
+// interface SuperTooltipContentProps extends TooltipContentProps {
+//   className: string
+//   children: React.ReactNode
+// }
+// export interface TooltipContentProps extends PropsWithChildren {}
 
 const Pin = ({
   coordX,
@@ -20,16 +56,17 @@ const Pin = ({
   dateFilter,
   slug,
 }: PinPropsType) => {
-  // console.log('props => ', props)
+  // console.log('GingkoBiloba => ', GingkoBiloba)
   // const { openModal } = useContext(microfictionsContext)
   const { openModal } = useMicrofictionsContext()
-  const pinClassName = useRef(true)
-  const isclassNameToRemove = pinClassName.current.className
-    ? pinClassName.current.className.includes('toRemove')
+  const pinClassName = useRef<HTMLDivElement>(null)
+
+  const isclassNameToRemove = pinClassName.current?.className
+    ? pinClassName.current?.className.includes('toRemove')
     : ''
   const pinYear = Date.split('/')[2]
 
-  let updatedClassName
+  let updatedClassName = 'pin'
 
   if (dateFilter && dateFilter[0] < pinYear) {
     updatedClassName = 'pin toRemove'
@@ -57,15 +94,16 @@ const Pin = ({
               top: `${coordY}%`,
               left: `${coordX}%`,
             }}
-            datadate={Date}
-            datahour={Heure}
-            datatext={Texte_mf}
-            dataslug={slug}
-            onClick={(e, value = { GingkoBiloba }) => {
-              openModal(e, value, slug)
+            data-date={Date}
+            data-hour={Heure}
+            data-text={Texte_mf}
+            data-slug={slug}
+            onClick={(e) => {
+              openModal(e, GingkoBiloba, slug)
             }}
           ></div>
         </TooltipTrigger>
+        {/* <TooltipContent> */}
         <TooltipContent className="data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade text-violet11 select-none rounded-[4px] bg-white px-[15px] py-[10px] text-[15px] leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity]">
           <p>{pinYear}</p>
         </TooltipContent>

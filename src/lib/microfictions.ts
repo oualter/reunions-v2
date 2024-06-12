@@ -49,9 +49,8 @@ export async function GetMicroFictions() {
   }
 }
 
-async function fetchMF(parameters:string) {
-  const url =
-    `${CMS_URL}/api/microfictions?` + (parameters, { encodeValuesOnly: true })
+async function fetchMF(parameters: { fields: string[]; sort: string[] }) {
+  const url = `${CMS_URL}/api/microfictions?` + { encodeValuesOnly: true }
   const response = await fetch(url, {
     next: {
       tags: [CACHE_TAG_REUNION],

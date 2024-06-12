@@ -1,24 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    // "target": "es5",
     // "useDefineForClassFields": true,
     // "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    // "target": "es2022",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "es2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    // "strict": true,
+    "strict": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    // "jsx": "preserve",
     "jsx": "preserve",
     "incremental": true,
     "plugins": [
@@ -27,38 +23,30 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/app/*"
-      ]
+      "@/*": ["./src/app/*"]
     }
     // "baseUrl": "src/*",
     // "paths": {
     //   "@/components/*": ["components/*"]
     // }
   },
+  // "include": [
+  //   "new-types.d.ts",
+  //   "next-env.d.ts",
+  //   ".next/types/**/*.ts",
+  //   "**/*.ts",
+  //   "**/*.tsx"
+  // ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/ModalHandler.jsx",
-    "src/app/components/ModalHandler.tsx.backup",
-    "src/app/[slug]/page.jsx.backup.last",
-    "src/app/[slug]/page.tsx.backup",
-    "src/app/[slug]/page-revamp.backup",
-    "src/app/[slug]/page.tsx.bachup",
-    "src/app/mentions-legales/page.jsx",
-    "src/app/components/ImagePlaceHolder.tsx.backup",
-    "src/app/components/NavBar.tsx",
-    "src/app/a-propos/page.jsx",
-    "src/app/le-livre/page.jsx",
-    "src/app/providers.tsx",
-    "src/app/components/ImagePlaceHolder.tsx",
-    "src/app/layout.tsx",
-    "src/app/page.tsx",
-    "src/app/components/YearsSlider.tsx"
+    "src/app/components/YearsSlider.tsx.backup"
   ],
   "exclude": [
     "node_modules"
+    // "src/app/components/Modal.tsx",
+    // "src/app/components/Pin.tsx"
   ]
 }

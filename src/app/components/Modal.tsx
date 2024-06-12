@@ -1,18 +1,35 @@
 'use client'
+import { type NamedNodeMap } from '@/typescript/types'
 import { Fragment } from 'react'
 import { useMicrofictionsContext } from '@/contexts/microfictions.context'
 import { Dialog, Transition } from '@headlessui/react'
 
+// type ModalAttrType = {
+//   getNamedItem(attribute: string)
+// }
+
+// type MicrofictionsContextType = {
+//   closeModal: boolean
+//   isOpen: boolean
+//   modalAttr: NamedNodeMap
+// }
+
 const Modal = () => {
   // const { closeModal, isOpen, modalAttr } = useContext(microfictionsContext)
-  const { closeModal, isOpen, modalAttr } = useMicrofictionsContext()
-  console.log('modalAttr => ', modalAttr)
+  const { closeModal, isOpen, modalAttr } =
+    useMicrofictionsContext()
+
   if (!modalAttr) {
     return false
   }
-  console.log('modalAttr useMicrofictionsContext => ', useMicrofictionsContext())
-  const mfDate = modalAttr.getNamedItem('datadate').value
-  const mfHour = modalAttr.getNamedItem('datahour').value
+  // console.log(
+  //   'modalAttr.getNamedItem("datadate") => ',
+  //   typeof modalAttr.getNamedItem('datadate').value
+  // )
+  // console.log('modalAttr typeof => ', typeof modalAttr)
+  // console.log('modalAttr["datadate"] => ', modalAttr['datadate'].value)
+  const mfDate = modalAttr.getNamedItem('data-date').value
+  const mfHour = modalAttr.getNamedItem('data-hour').value
   let MFDay = mfDate.split('/')[0]
   let MFMonth = mfDate.split('/')[1]
   let MFYear = mfDate.split('/')[2]
@@ -37,16 +54,16 @@ const Modal = () => {
     finalDisplayDate = displayDate
   }
   const mfText = modalAttr
-    .getNamedItem('datatext')
+    .getNamedItem('data-text')
     .value.replaceAll(`\n`, `<br/>`)
 
-  const mfSlug = modalAttr.getNamedItem('dataslug')
-    ? modalAttr.getNamedItem('dataslug').value
+  const mfSlug = modalAttr.getNamedItem('data-slug')
+    ? modalAttr.getNamedItem('data-slug').value
     : null
 
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment} className="z-1000">
+      <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
           className="relative z-1000"

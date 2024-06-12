@@ -2,7 +2,7 @@ import { MicrofictionsContextProvider } from '../contexts/microfictions.context'
 import ImagePlaceHolder from '../components/ImagePlaceHolder'
 import PinsList from '../components/PinsList'
 import Modal from '../components/Modal'
-import YearsSlider from '../components/YearsSlider'
+// import YearsSlider from '../components/YearsSlider.tsx'
 import Confettis from '../components/Confettis'
 import { GetMicroFictions } from '../../lib/microfictions'
 import { chapitres } from '../data'
@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 }
 
 export default async function showFictions({ params }) {
-  const microF = await GetMicroFictions(params)
+  const microF = await GetMicroFictions()
 
   const { slug } = params
 
@@ -103,7 +103,7 @@ export default async function showFictions({ params }) {
           <ImagePlaceHolder />
           <PinsList />
         </article>
-        <YearsSlider />
+        {/* <YearsSlider /> */}
         <Modal />
       </section>
       <Confettis />

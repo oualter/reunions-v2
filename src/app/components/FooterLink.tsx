@@ -1,8 +1,21 @@
 'use client'
 import Link from 'next/link'
+// import type { ReactNode } from 'react'
 import { usePathname } from 'next/navigation'
+// import { UrlObject } from 'url'
+import type { LinkPropsType } from '@/typescript/types'
 
-export default function FooterLink({ children, href, prefetch }) {
+// type LinkPropsType = {
+//   children: ReactNode
+//   href: UrlObject | string
+//   prefetch?: boolean
+// }
+
+export default function FooterLink({
+  children,
+  href,
+  prefetch,
+}: LinkPropsType) {
   const pathname = usePathname()
   if (href === pathname) {
     return <span className="font-bold">{children}</span>

@@ -1,4 +1,4 @@
-const HeadingOne = ({texte}) => {
+const HeadingOne = ({texte} : {texte:string}) => {
   return (
     <h1 className="text-5xl">{texte}</h1>
   )

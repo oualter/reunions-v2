@@ -9,7 +9,7 @@ const url = `${CMS_URL}/api/le-livre?populate=*`
 
 export default async function leLivre() {
   try {
-    const response = await fetch(url)
+    const response:any = await fetch(url)
     if (response.ok) {
       const body = await response.json()
       const { Titre, Contenu, contenu_2, Illustration } = body.data.attributes

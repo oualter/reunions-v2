@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import NavLink from './NavLink'
+import NavLink from '@/components/NavLink'
 import {
   HiOutlineMenu,
   HiOutlineX,

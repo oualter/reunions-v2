@@ -2,7 +2,7 @@ import { MicrofictionsContextProvider } from '@/contexts/microfictions.context'
 import ImagePlaceHolder from '@/components/ImagePlaceHolder'
 import PinsList from '@/components/PinsList'
 import Modal from '@/components/Modal'
-import YearsSlider from '@/components/YearsSlider'
+// import YearsSlider from '@/components/YearsSlider'
 import { GetMicroFictions } from '../lib/microfictions'
 import Confettis from '@/components/Confettis'
  
@@ -19,7 +19,7 @@ export default async function Home() {
           <ImagePlaceHolder />
           <PinsList />
         </article>
-        <YearsSlider />
+        {/* <YearsSlider /> */}
         <Modal />
       </section>
       <Confettis />

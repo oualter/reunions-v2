@@ -1,14 +1,17 @@
 'use client'
 import { useEffect, useMemo } from 'react'
-import {useMicrofictionsContext} from '@/contexts/microfictions.context'
+import { useMicrofictionsContext } from '@/contexts/microfictions.context'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
+import {
+  type Container,
+  type ISourceOptions,
+  MoveDirection,
+  OutMode,
+} from '@tsparticles/engine'
 import { loadAll } from '@tsparticles/all'
 
-const Confettis = (props) => {
-  //   const [initConfettis, setInitConfettis] = useState(false)
-  // let { isShowConfettis, InitConfettis, setInitConfettis, modalAttr } = useContext(microfictionsContext)
-  let { isShowConfettis, InitConfettis, setInitConfettis, modalAttr } =
-    useMicrofictionsContext()
+const Confettis = () => {
+  let { isShowConfettis, setInitConfettis } = useMicrofictionsContext()
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -16,12 +19,12 @@ const Confettis = (props) => {
         setInitConfettis(true)
       })
     })
-  }, [])
+  })
 
-  const particlesLoaded = (container) => {
-    console.log('particlesLoaded => ', container)
+  const particlesLoaded = async (container?: Container): Promise<void> => {
+    console.log(container)
   }
-  const options = useMemo(
+   const options: ISourceOptions = useMemo(
     () => ({
       background: {
         color: {

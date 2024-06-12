@@ -1,8 +1,13 @@
+import type { ReactNode } from 'react'
+import { type MetadataType } from '@/typescript/types'
 import '@/globals.css'
 import NavBar from '@/components/NavBar'
 import FooterBar from '@/components/FooterBar'
 import SiteHeader from '@/components/SiteHeader'
-import { type MetadataType } from '@/typescript/types'
+
+type LayoutProps = {
+  children: ReactNode
+}
 
 export const metadata: MetadataType = {
   title: {
@@ -14,11 +19,7 @@ export const metadata: MetadataType = {
   robots: 'noindex, nofollow',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="fr">
       <body className="container flex flex-col min-h-screen mx-auto pb-2">
