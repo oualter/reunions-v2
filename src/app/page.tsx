@@ -1,17 +1,16 @@
 import { MicrofictionsContextProvider } from '@/contexts/microfictions.context'
 import ImagePlaceHolder from '@/components/ImagePlaceHolder'
+import SideBar from '@/components/SideBar'
 import PinsList from '@/components/PinsList'
-import Modal from '@/components/Modal'
-// import YearsSlider from '@/components/YearsSlider'
 import { GetMicroFictions } from '../lib/microfictions'
 import Confettis from '@/components/Confettis'
- 
+
 export default async function Home() {
   const microF = await GetMicroFictions()
   const { microfictions } = microF
 
-  await new Promise((resolve) => setTimeout(resolve, 3000))
- 
+  // await new Promise((resolve) => setTimeout(resolve, 1000))
+
   return (
     <MicrofictionsContextProvider value={{ microfictions }}>
       <section className="map-page relative">
@@ -19,8 +18,7 @@ export default async function Home() {
           <ImagePlaceHolder />
           <PinsList />
         </article>
-        {/* <YearsSlider /> */}
-        <Modal />
+        <SideBar />
       </section>
       <Confettis />
     </MicrofictionsContextProvider>

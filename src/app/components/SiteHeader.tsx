@@ -15,15 +15,15 @@ export default function SiteHeader() {
   // const currentPath = router.pathname
   // console.log('currentPath => ', currentPath)
 
-
+  /*
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // console.log('typeof window 2 => ', typeof window)
       // console.log('window.location !!!!!!!!!!!!!!!! => ', window.location)
-      setCurrentUrl(window.location.href)
+      // setCurrentUrl(window.location.href)
       // console.log('currentUrl.pathname => ', currentUrl)
     }
-  }, [])
+  }, [])*/
 
   let isHomepage = pathname === '/'
   // console.log('isHomepage => ', isHomepage)

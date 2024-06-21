@@ -7,7 +7,8 @@ type MicrofictionsContextType = {
   pins: PinType[]
   defaultpins: PinType[] | null
   openModal: (
-    e: React.SyntheticEvent<HTMLDivElement, Event>,
+    e: React.SyntheticEvent<HTMLAnchorElement, Event>,
+    // e: React.SyntheticEvent<HTMLDivElement, Event>,
     value: boolean,
     slug: string
   ) => void
@@ -31,15 +32,6 @@ type MFContextPropsType = {
   }
   children: React.ReactNode
 }
-// const mfArray = props.value.microfictionsFiltered
-//   ? props.value.microfictionsFiltered
-//   : props.value.microfictions
-
-// type TypeOpenModalAttr = {
-//   e: React.SyntheticEvent<HTMLDivElement, Event>
-//   value: boolean
-//   slug: string
-// }
 
 const MicrofictionsContext = createContext<MicrofictionsContextType | null>(
   null
@@ -59,7 +51,6 @@ const MicrofictionsContextProvider = (props: MFContextPropsType) => {
   const router = useRouter()
   let [isOpen, setIsOpen] = useState(false)
   let [modalAttr, setModalAttr] = useState(null)
-  // let [modalAttr, setModalAttr] = useState<ModalAttrType>(null)
   let [GingkoBiloba, setGingkoBiloba] = useState(false)
   let [isShowConfettis, setIsShowConfettis] = useState(false)
   let [initConfettis, setInitConfettis] = useState(false)
@@ -74,21 +65,27 @@ const MicrofictionsContextProvider = (props: MFContextPropsType) => {
 
   // console.log('mfArray => ', mfArray)
   const openModal = (e, value, slug): void => {
+    console.log('openmodal e => ', e)
     // const customParamDate = e.target.attributes
-    const customParamDate = e.target.dataset.date.replaceAll('/', '-')
-    if (slug) {
-      router.push(slug + '?microfiction-date=' + customParamDate)
-    }
-    setModalAttr(e.target.attributes)
+    // e.preventDefault()
+    // => // const customParamDate = e.target.dataset.date.replaceAll('/', '-')
+    // if (slug) {
+    //   router.push(slug + '/microfiction-date-' + customParamDate, {
+    //     scroll: false,
+    //   })
+    // } else {
+    //   router.push('microfiction-date-' + customParamDate, { scroll: false })
+    // }
+    // => // setModalAttr(e.target.attributes)
     // setModalAttr(e.target?.dataset)
-    setIsOpen(true)
-    console.log('value.GingkoBiloba => ', value)
-    setIsShowConfettis(value)
+    // => // setIsOpen(true)
+    // console.log('value.GingkoBiloba => ', value)
+    // => // setIsShowConfettis(value)
   }
   const closeModal = (slug: string) => {
-    if (slug) {
-      router.push('/' + slug)
-    }
+    // if (slug) {
+    //   router.push('/' + slug)
+    // }
     setIsOpen(false)
     setIsShowConfettis(false)
   }

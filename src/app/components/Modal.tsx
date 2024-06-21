@@ -1,59 +1,61 @@
 'use client'
-import { type NamedNodeMap } from '@/typescript/types'
-import { Fragment } from 'react'
+import { useState } from 'react'
 import { useMicrofictionsContext } from '@/contexts/microfictions.context'
-import { Dialog, Transition } from '@headlessui/react'
+import {
+  Button,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from '@headlessui/react'
 
-const Modal = () => {
-  const { closeModal, isOpen, modalAttr } =
-    useMicrofictionsContext()
+import { useRouter } from 'next/navigation'
 
-  if (!modalAttr) {
-    return false
+const Modal = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter()
+  // console.log('children => ', children)
+  // const handleClose = () => router.back()
+  // const { closeModal, isOpen, modalAttr } = useMicrofictionsContext()
+
+  let [isOpen, setIsOpen] = useState(true)
+
+  function open() {
+    setIsOpen(true)
   }
-  const mfDate = modalAttr.getNamedItem('data-date').value
-  const mfHour = modalAttr.getNamedItem('data-hour').value
-  let MFDay = mfDate.split('/')[0]
-  let MFMonth = mfDate.split('/')[1]
-  let MFYear = mfDate.split('/')[2]
 
-  const dateToBeFormatted =
-    MFYear + '-' + MFMonth + '-' + MFDay /*+ 'T' + mfHour+':00'*/
-  let displayDate = new Date(dateToBeFormatted).toLocaleDateString('fr-fr', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
-  let finalDisplayDate
-  if (MFYear.includes('-')) {
-    let stringToReplace =
-      displayDate.split(' ')[displayDate.split(' ').length - 1]
-    finalDisplayDate = displayDate.replace(
-      stringToReplace,
-      '-' + stringToReplace
-    )
-  } else {
-    finalDisplayDate = displayDate
+  function close() {
+    setIsOpen(false)
+    router.back()
   }
-  const mfText = modalAttr
-    .getNamedItem('data-text')
-    .value.replaceAll(`\n`, `<br/>`)
 
-  const mfSlug = modalAttr.getNamedItem('data-slug')
-    ? modalAttr.getNamedItem('data-slug').value
+  const displayDate = children[0].props.children
+    ? children[0].props.children
     : null
+  const displayHour = children[1].props.children
+    ? children[1].props.children
+    : null
+  const displayContent = children[2].props.children
+    ? children[2].props.children.props.content
+    : null
+    console.log('children => ', children)
+    console.log('displayContent => ', displayContent)
+
+    const isGinkgobiloba = children[3].props.children
+      ? children[3].props.children
+      : null
+      console.log('isGinkgobiloba => ', isGinkgobiloba)
 
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={isOpen}>
         <Dialog
           as="div"
-          className="relative z-1000"
-          onClose={() => closeModal(mfSlug)}
+          className="relative z-10 focus:outline-none"
+          onClose={close}
         >
-          <Transition.Child
-            as={Fragment}
+          <TransitionChild
+            // as={Fragment}
             enter="ease-out duration-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
@@ -62,12 +64,11 @@ const Modal = () => {
             leaveTo="opacity-0"
           >
             <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
+          </TransitionChild>
 
           <div className="fixed inset-0 overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
+              <TransitionChild
                 enter="ease-out duration-300"
                 enterFrom="opacity-0 scale-[0]"
                 enterTo="opacity-100 scale-100"
@@ -75,20 +76,21 @@ const Modal = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-[0]"
               >
+                {/* <!-- HERE IS THE CONTENT --> */}
                 <div className="dialog-panel-wrapper min-w-96 rounded-2xl py-4">
-                  <Dialog.Panel className="dialog-reunion w-full max-w-md font-typewriter transform py-4 px-8  text-left align-middle transition-all">
-                    <Dialog.Title
+                  <DialogPanel className="dialog-reunion w-full max-w-md font-typewriter transform py-4 px-8  text-left align-middle transition-all">
+                    <DialogTitle
                       as="h3"
                       className="text-2xl font-medium leading-6 text-gray-900"
                     >
-                      {finalDisplayDate} <br /> {mfHour}
-                    </Dialog.Title>
+                      {displayDate} <br /> {displayHour}
+                    </DialogTitle>
                     <div className="mt-2 pb-4 text-lg">
-                      <div dangerouslySetInnerHTML={{ __html: mfText }} />
+                      {displayContent}
                     </div>
-                  </Dialog.Panel>
+                  </DialogPanel>
                 </div>
-              </Transition.Child>
+              </TransitionChild>
             </div>
           </div>
         </Dialog>

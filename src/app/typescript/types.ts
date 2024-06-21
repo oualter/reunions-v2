@@ -41,6 +41,7 @@ export type PinPropsType = {
   GingkoBiloba: boolean
   dateFilter?: string[]
   slug?: string
+  id?: number | string
 }
 
 export type NamedNodeMap = {

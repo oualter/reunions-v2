@@ -1,11 +1,13 @@
-import { MicrofictionsContextProvider } from '../contexts/microfictions.context'
-import ImagePlaceHolder from '../components/ImagePlaceHolder'
-import PinsList from '../components/PinsList'
-import Modal from '../components/Modal'
+import { MicrofictionsContextProvider } from '@/contexts/microfictions.context'
+import ImagePlaceHolder from '@/components/ImagePlaceHolder'
+import PinsList from '@/components/PinsList'
+import SideBar from '@/components/SideBar'
+// import Modal from '@/components/Modal'
+import Modal from '@/components/Modal'
 // import YearsSlider from '../components/YearsSlider.tsx'
-import Confettis from '../components/Confettis'
+import Confettis from '@/components/Confettis'
 import { GetMicroFictions } from '../../lib/microfictions'
-import { chapitres } from '../data'
+import { chapitres } from '@/data'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
@@ -97,14 +99,15 @@ export default async function showFictions({ params }) {
 
   return (
     <MicrofictionsContextProvider value={{ microfictionsFiltered }}>
-      <section className="map-page relative">
-        <h1>{pageTitle}</h1>
+      <section className="map-page slug-page">
+        <h1 className="grow-5 w-full">{pageTitle}</h1>
         <article className="img-placeholder image-wrapper lg:w-[1080px] mx-auto relative mix-blend-darken ">
           <ImagePlaceHolder />
           <PinsList />
         </article>
+        <SideBar />
         {/* <YearsSlider /> */}
-        <Modal />
+        {/* <Modal /> */}
       </section>
       <Confettis />
     </MicrofictionsContextProvider>

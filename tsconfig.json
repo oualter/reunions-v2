@@ -3,7 +3,7 @@
     // "target": "es5",
     // "useDefineForClassFields": true,
     // "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "target": "es2022",
+    "target": "es2020",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -42,10 +42,12 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/YearsSlider.tsx.backup"
+    "src/app/components/Modal.tsx.backup"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/app/components/Modal.tsx.backup"
+
     // "src/app/components/Modal.tsx",
     // "src/app/components/Pin.tsx"
   ]
