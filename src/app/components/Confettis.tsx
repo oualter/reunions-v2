@@ -1,6 +1,7 @@
 'use client'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useContext, useMemo } from 'react'
 import { useMicrofictionsContext } from '@/contexts/microfictions.context'
+import microfictionsContext from '@/contexts/microfictions.context'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import {
   type Container,
@@ -10,21 +11,36 @@ import {
 } from '@tsparticles/engine'
 import { loadAll } from '@tsparticles/all'
 
-const Confettis = () => {
-  let { isShowConfettis, setInitConfettis } = useMicrofictionsContext()
+type ConfettisType = {
+  isShowConfettis: boolean
+  initConfettis: boolean
+  setInitConfettis: React.Dispatch<React.SetStateAction<boolean>>
+}
 
+const Confettis = () => {
+  let { isShowConfettis, setInitConfettis }: ConfettisType =
+    useMicrofictionsContext()
+  // let { isShowConfettis, setInitConfettis }: ConfettisType =
+  // useContext(microfictionsContext)
+  console.log('passe par Confettis.tsx !!!!!')
+  const confettisContext = useContext(microfictionsContext)
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadAll(engine).then(() => {
+        console.log('before setInitConfettis')
         setInitConfettis(true)
+        console.log('after setInitConfettis')
       })
     })
   })
 
+  console.log('Confettis isShowConfettis => ', isShowConfettis)
+
   const particlesLoaded = async (container?: Container): Promise<void> => {
+    console.log('container Confettis !!!!')
     console.log(container)
   }
-   const options: ISourceOptions = useMemo(
+  const options: ISourceOptions = useMemo(
     () => ({
       background: {
         color: {

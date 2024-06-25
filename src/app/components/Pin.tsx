@@ -65,6 +65,7 @@ const Pin = ({
         <TooltipTrigger asChild>
           <Link
             // className="pin"
+            scroll={false}
             href={`/microfiction/${id}`}
             // href={'?microfiction-date=' + customParamDate}
             ref={pinClassName}
@@ -80,14 +81,14 @@ const Pin = ({
             // data-hour={Heure}
             // data-text={Texte_mf}
             // data-slug={slug}
-            onClick={(e) => {
+            // onClick={(e) => {
               // e.preventDefault()
-              router.push(`/microfiction/${id}`, { scroll: false })
+              // router.push(`/microfiction/${id}`, { scroll: false })
               // openModal(e, GingkoBiloba, slug)
               // router.push(mfHref, {
               //   scroll: false,
               // })
-            }}
+            // }}
           >
             Microfiction place de la Réunion du {Date} à {Heure}
           </Link>

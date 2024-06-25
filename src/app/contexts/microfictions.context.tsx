@@ -6,129 +6,70 @@ import { type PinType } from '@/typescript/types'
 type MicrofictionsContextType = {
   pins: PinType[]
   defaultpins: PinType[] | null
-  openModal: (
-    e: React.SyntheticEvent<HTMLAnchorElement, Event>,
-    // e: React.SyntheticEvent<HTMLDivElement, Event>,
-    value: boolean,
-    slug: string
-  ) => void
-  closeModal: (arg: string) => void
-  isOpen: boolean
-  // setIsOpen: (value: React.SetStateAction<boolean>) => void
-  modalAttr: { getNamedItem(attribute: string) }
   GingkoBiloba: boolean
+  isGingkoBiloba: boolean
   isShowConfettis: boolean
   initConfettis: boolean
   setInitConfettis: React.Dispatch<React.SetStateAction<boolean>>
-  // handleDisplayPins: () => void
   selectedMicrofictions: PinType[]
   unselectedMicrofictions: PinType[]
-  // dateFilter: string[]
 }
 type MFContextPropsType = {
   value: {
     microfictionsFiltered?: []
     microfictions?: []
+    isGingkoBiloba?: boolean
+    GingkoBiloba?: boolean
   }
   children: React.ReactNode
 }
 
 const MicrofictionsContext = createContext<MicrofictionsContextType | null>(
   null
-)
-
-// variables utiles pour les effets d'affichage des épingles
-let counterforMF = 0
-const filteredMFArchive = []
+);
+export default MicrofictionsContext
 
 const MicrofictionsContextProvider = (props: MFContextPropsType) => {
-  // console.log('MicrofictionsContextProvider props => ', props)
-
-  type ModalAttrType = {
-    getNamedItem(attribute: string)
-  }
+  console.log('on entre dans le contexte !!!!')
 
   const router = useRouter()
-  let [isOpen, setIsOpen] = useState(false)
-  let [modalAttr, setModalAttr] = useState(null)
+  let [isGingkoBiloba, setIsGingkoBiloba] = useState(false)
   let [GingkoBiloba, setGingkoBiloba] = useState(false)
   let [isShowConfettis, setIsShowConfettis] = useState(false)
   let [initConfettis, setInitConfettis] = useState(false)
   const [selectedMicrofictions, setSelectedMicrofictions] = useState([])
   const [unselectedMicrofictions, setUnselectedMicrofictions] = useState([])
-  // const [reselectedMicrofictions, setReselectedMicrofictions] = useState([])
-  // const [dateFilter, setDateFilter] = useState(null)
 
   const mfArray = props.value.microfictionsFiltered
     ? props.value.microfictionsFiltered
     : props.value.microfictions
 
-  // console.log('mfArray => ', mfArray)
-  const openModal = (e, value, slug): void => {
-    console.log('openmodal e => ', e)
-    // const customParamDate = e.target.attributes
-    // e.preventDefault()
-    // => // const customParamDate = e.target.dataset.date.replaceAll('/', '-')
-    // if (slug) {
-    //   router.push(slug + '/microfiction-date-' + customParamDate, {
-    //     scroll: false,
-    //   })
-    // } else {
-    //   router.push('microfiction-date-' + customParamDate, { scroll: false })
-    // }
-    // => // setModalAttr(e.target.attributes)
-    // setModalAttr(e.target?.dataset)
-    // => // setIsOpen(true)
-    // console.log('value.GingkoBiloba => ', value)
-    // => // setIsShowConfettis(value)
+
+  const isGingkoBilobaValue = props.value.isGingkoBiloba
+
+  if (props.value.isGingkoBiloba) {
+    // console.log('isGingkoBiloba context => ', isGingkoBiloba)
+    console.log('Dans le contexte, le bon signal lance les confettis !!!!');
+    () => {
+      setIsGingkoBiloba(true)
+      setGingkoBiloba(true)
+      setIsShowConfettis(true)
+      setInitConfettis(true)
+    }
   }
-  const closeModal = (slug: string) => {
-    // if (slug) {
-    //   router.push('/' + slug)
-    // }
-    setIsOpen(false)
-    setIsShowConfettis(false)
-  }
-
-  // filtre les épingles inférieures aux dates sélectionnées
-  // const handleDisplayPins = (event: string[]) => {
-  //   console.log('handleDisplayPins event => ', event)
-  //   setDateFilter(event)
-  //   const filteredMF = mfArray.filter((elt) => {
-  //     let eltDate = parseInt(elt.Date.split('/')[2])
-  //     return eltDate < parseInt(event) + 1
-  //   })
-  //   // stocke l'historique des filtrages
-  //   filteredMFArchive[counterforMF] = filteredMF
-  //   counterforMF++
-  //   // filtre les microfictions non filtrées pour affecter une animation sur les épingles qui disparaissent en utilisant le slider
-  //   const nonFilteredMF = mfArray.filter((elt) => !filteredMF.includes(elt))
-
-  //   setUnselectedMicrofictions(nonFilteredMF)
-  //   const temporizer = setTimeout(() => {
-  //     setSelectedMicrofictions(filteredMF)
-  //   }, 500)
-  // }
-
   return (
     <MicrofictionsContext.Provider
       value={{
         pins:
           selectedMicrofictions.length > 0 ? selectedMicrofictions : mfArray,
         defaultpins: mfArray,
-        openModal,
-        closeModal,
-        isOpen,
-        modalAttr,
         GingkoBiloba,
+        isGingkoBiloba,
         isShowConfettis,
         initConfettis,
         setInitConfettis,
-        // handleDisplayPins,
         selectedMicrofictions: mfArray,
         unselectedMicrofictions,
-        // reselectedMicrofictions,
-        // dateFilter,
       }}
     >
       <>{props.children}</>

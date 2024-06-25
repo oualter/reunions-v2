@@ -11,6 +11,7 @@ export default async function MicrofictionModal({
 }: {
   params: { id: number }
 }) {
+  console.log('PAGE : src > app > @modal > (.)microfiction > [id] > page.tsx')
   const microF = await GetMicroFictions()
   const { microfictions } = microF
   const thisMF = microfictions.find((elt) => {
@@ -22,9 +23,9 @@ export default async function MicrofictionModal({
   let MFMonth = thisMF.Date.split('/')[1]
   let MFYear = thisMF.Date.split('/')[2]
 
-  console.log('thisMF => ', thisMF)
+  // console.log('thisMF => ', thisMF)
 
-  // console.log('GingkoBiloba => ', GingkoBiloba)
+  console.log('GingkoBiloba => ', GingkoBiloba)
 
   const dateToBeFormatted =
     MFYear + '-' + MFMonth + '-' + MFDay /*+ 'T' + mfHour+':00'*/
@@ -45,9 +46,13 @@ export default async function MicrofictionModal({
   } else {
     finalDisplayDate = displayDate
   }
+
+  // let [isShowConfettis, setIsShowConfettis] = useState(false)
+
+
   // await new Promise((resolve) => setTimeout(resolve, 3000))
   return (
-    <MicrofictionsContextProvider value={microfictions}>
+    <MicrofictionsContextProvider value={{ isGingkoBiloba: GingkoBiloba }}>
       <>
         <Modal>
           <div>{finalDisplayDate}</div>
@@ -58,6 +63,7 @@ export default async function MicrofictionModal({
           <div>{GingkoBiloba}</div>
         </Modal>
       </>
+      <Confettis />
     </MicrofictionsContextProvider>
   )
 }
