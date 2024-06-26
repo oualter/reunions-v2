@@ -18,7 +18,7 @@ export default async function apropos() {
       return (
         <section id="child-page">
           <article className="generic-content lg:max-w-[700px] h-full mx-auto my-6 px-2 lg:px-0">
-            <h1 className="text-3xl lg:text-5xl mb-4">{Titre}</h1>
+            <h1 className="text-2xl lg:text-4xl mb-4">{Titre}</h1>
             <BlockRendererClient content={Contenu} />
           </article>
           <SideBar />

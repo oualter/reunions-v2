@@ -17,6 +17,7 @@ export default function NavBar() {
     setOpen(!isOpen)
   }
   const handleSubMenu = () => {
+    console.log('isMenuOpen => ', isMenuOpen)
     setIsMenuOpen(!isMenuOpen)
   }
 
@@ -37,9 +38,11 @@ export default function NavBar() {
         onClick={toggleClass}
       />
       <ul className="hidden md:flex h-auto md:w-full w-full bg-white xl:bg-transparent">
-        {/* <li
+        <li
           onClick={handleSubMenu}
-          className={isMenuOpen ? 'chapters open' : 'chapters close'}
+          className={
+            isMenuOpen ? 'lg:hidden chapters open' : 'lg:hidden chapters close'
+          }
         >
           <NavLink href="#">
             Chapitres
@@ -56,12 +59,12 @@ export default function NavBar() {
                   className="sm:text-base hover:font-bold"
                   href={chapitre.month + `/`}
                 >
-                  {chapitre.title}
+                  {chapitre.title.replace(', Place de la Réunion,', ', ')}
                 </Link>
               </li>
             ))}
           </ul>
-        </li> */}
+        </li>
         <li>
           <NavLink href="/le-livre/">Le livre (PDF)</NavLink>
         </li>

@@ -20,7 +20,7 @@ const Contact: FC = () => {
     <form
       onSubmit={handleSubmit(onSubmit)}
       // className="py-4 mt-4 flex flex-col gap-5 max-w-xl mx-auto"
-      className="py-4 mt-4 flex flex-col gap-5 mx-auto"
+      className="py-4 mt-4 flex flex-col gap-5"
     >
       <label htmlFor="username">Prénom et nom :</label>
       <input

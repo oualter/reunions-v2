@@ -22,6 +22,11 @@ export default async function MicrofictionPage({
   let MFDay = thisMF.Date.split('/')[0]
   let MFMonth = thisMF.Date.split('/')[1]
   let MFYear = thisMF.Date.split('/')[2]
+  const linkToShare = '/microfiction/' + thisMF.id
+  console.log(
+    'linkToShare from PAGE : src > app > microfiction > [id] > page.tsx => ',
+    linkToShare
+  )
   const dateToBeFormatted =
     MFYear + '-' + MFMonth + '-' + MFDay /*+ 'T' + mfHour+':00'*/
   let displayDate = new Date(dateToBeFormatted).toLocaleDateString('fr-fr', {
@@ -51,6 +56,7 @@ export default async function MicrofictionPage({
             <BlockRendererClient content={Texte_microfiction} />
           </article>
           <div>{GingkoBiloba}</div>
+          <div>{linkToShare}</div>
         </Modal>
       </div>
       <Confettis />

@@ -43,7 +43,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/components/Modal.tsx.backup"
-  ],
+, "src/app/components/share.jsx"  ],
   "exclude": [
     "node_modules",
     "src/app/components/Modal.tsx.backup"

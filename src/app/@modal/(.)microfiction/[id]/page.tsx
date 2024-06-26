@@ -5,6 +5,7 @@ import MFCard from '@/components/MFCard'
 import Modal from '@/components/Modal'
 import { GetMicroFictions } from '../../../../lib/microfictions'
 import Confettis from '@/components/Confettis'
+import React from 'react'
 
 export default async function MicrofictionModal({
   params: { id: id },
@@ -18,12 +19,17 @@ export default async function MicrofictionModal({
     return elt.id == id
   })!
 
+  console.log('thisMF => ', thisMF)
   const { Heure, Texte_microfiction, GingkoBiloba } = thisMF
   let MFDay = thisMF.Date.split('/')[0]
   let MFMonth = thisMF.Date.split('/')[1]
   let MFYear = thisMF.Date.split('/')[2]
 
-  // console.log('thisMF => ', thisMF)
+  const linkToShare = '/microfiction/' + thisMF.id
+  console.log(
+    'linkToShare from PAGE : src > app > @modal > (.)microfiction > [id] > page.tsx => ',
+    linkToShare
+  )
 
   console.log('GingkoBiloba => ', GingkoBiloba)
 
@@ -49,7 +55,6 @@ export default async function MicrofictionModal({
 
   // let [isShowConfettis, setIsShowConfettis] = useState(false)
 
-
   // await new Promise((resolve) => setTimeout(resolve, 3000))
   return (
     <MicrofictionsContextProvider value={{ isGingkoBiloba: GingkoBiloba }}>
@@ -61,6 +66,7 @@ export default async function MicrofictionModal({
             <BlockRendererClient content={Texte_microfiction} />
           </div>
           <div>{GingkoBiloba}</div>
+          <div>{linkToShare}</div>
         </Modal>
       </>
       <Confettis />

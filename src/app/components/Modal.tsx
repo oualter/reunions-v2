@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   useMicrofictionsContext,
   MicrofictionsContextProvider,
@@ -12,11 +12,20 @@ import {
   Transition,
   TransitionChild,
 } from '@headlessui/react'
+import { TwitterShare } from 'react-share-kit'
 
 import { useRouter } from 'next/navigation'
 
 const Modal = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter()
+
+  const [currentUrl, setCurrentUrl] = useState('')
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setCurrentUrl(window.location.href)
+    }
+  }, [])
 
   let [isOpen, setIsOpen] = useState(true)
 
@@ -38,7 +47,6 @@ const Modal = ({ children }: { children: React.ReactNode }) => {
   const displayContent = children[2].props.children
     ? children[2].props.children.props.content
     : null
-
   const isGinkgobiloba = children[3].props.children
     ? children[3].props.children
     : null
@@ -79,6 +87,13 @@ const Modal = ({ children }: { children: React.ReactNode }) => {
                     {displayDate}
                     <div className="text-xl">{displayHour}</div>
                   </h3>
+                                     
+                    {/* <TwitterShare
+                      url={currentUrl}
+                      title="Places de La Réunion..."
+                      hashtags={['microfiction', 'paris20']}
+                    /> */}
+                  
 
                   <DialogPanel className="dialog-reunion w-full max-w-md font-typewriter transform text-left align-middle transition-all px-8 ">
                     <div className="mt-2 pb-4 text-lg">{displayContent}</div>
