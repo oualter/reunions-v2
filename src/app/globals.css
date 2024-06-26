@@ -166,10 +166,6 @@ nav#main-navigation > ul ul li a {
   margin: 1rem;
 }
 
-#sidebar-navigation {
-  /* display: none; */
-}
-
 #sidebar-navigation > ul > li {
   /* outline: 2px solid red; */
   width: 170px;
@@ -295,7 +291,7 @@ main#main-container section.map-page,
   /* margin-right: 150px; */
 }
 .slug-page #sidebar-navigation {
-  top: -2rem;
+  margin-top: -2rem;
 }
 #sidebar-navigation > ul {
   position: fixed;
