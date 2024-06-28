@@ -1,6 +1,5 @@
 'use client'
-import React, { createContext, useContext, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import { type PinType } from '@/typescript/types'
 
 type MicrofictionsContextType = {
@@ -10,7 +9,6 @@ type MicrofictionsContextType = {
   isGingkoBiloba: boolean
   isShowConfettis: boolean
   initConfettis: boolean
-  setInitConfettis: React.Dispatch<React.SetStateAction<boolean>>
   selectedMicrofictions: PinType[]
   unselectedMicrofictions: PinType[]
 }
@@ -26,37 +24,29 @@ type MFContextPropsType = {
 
 const MicrofictionsContext = createContext<MicrofictionsContextType | null>(
   null
-);
+)
 export default MicrofictionsContext
 
 const MicrofictionsContextProvider = (props: MFContextPropsType) => {
-  console.log('on entre dans le contexte !!!!')
-
-  const router = useRouter()
-  let [isGingkoBiloba, setIsGingkoBiloba] = useState(false)
+  let [isGingkoBiloba, setIsGingkoBiloba] = useState(
+    props.value?.isGingkoBiloba
+  )
   let [GingkoBiloba, setGingkoBiloba] = useState(false)
   let [isShowConfettis, setIsShowConfettis] = useState(false)
   let [initConfettis, setInitConfettis] = useState(false)
   const [selectedMicrofictions, setSelectedMicrofictions] = useState([])
   const [unselectedMicrofictions, setUnselectedMicrofictions] = useState([])
 
-  const mfArray = props.value.microfictionsFiltered
+  const mfArray = props.value?.microfictionsFiltered
     ? props.value.microfictionsFiltered
-    : props.value.microfictions
+    : props.value?.microfictions
 
+  const isGingkoBilobaValue = props.value?.isGingkoBiloba
 
-  const isGingkoBilobaValue = props.value.isGingkoBiloba
+  useEffect(() => {
+    setIsGingkoBiloba(isGingkoBiloba)
+  }, [])
 
-  if (props.value.isGingkoBiloba) {
-    // console.log('isGingkoBiloba context => ', isGingkoBiloba)
-    console.log('Dans le contexte, le bon signal lance les confettis !!!!');
-    () => {
-      setIsGingkoBiloba(true)
-      setGingkoBiloba(true)
-      setIsShowConfettis(true)
-      setInitConfettis(true)
-    }
-  }
   return (
     <MicrofictionsContext.Provider
       value={{
@@ -67,7 +57,6 @@ const MicrofictionsContextProvider = (props: MFContextPropsType) => {
         isGingkoBiloba,
         isShowConfettis,
         initConfettis,
-        setInitConfettis,
         selectedMicrofictions: mfArray,
         unselectedMicrofictions,
       }}

@@ -1,7 +1,6 @@
 import { MicrofictionsContextProvider } from '@/contexts/microfictions.context'
 
 import Modal from '@/components/Modal'
-import MFCard from '@/components/MFCard'
 import BlockRendererClient from '@/components/BlockRendererClient'
 import Confettis from '@/components/Confettis'
 import { GetMicroFictions } from '../../../lib/microfictions'
@@ -23,10 +22,7 @@ export default async function MicrofictionPage({
   let MFMonth = thisMF.Date.split('/')[1]
   let MFYear = thisMF.Date.split('/')[2]
   const linkToShare = '/microfiction/' + thisMF.id
-  console.log(
-    'linkToShare from PAGE : src > app > microfiction > [id] > page.tsx => ',
-    linkToShare
-  )
+
   const dateToBeFormatted =
     MFYear + '-' + MFMonth + '-' + MFDay /*+ 'T' + mfHour+':00'*/
   let displayDate = new Date(dateToBeFormatted).toLocaleDateString('fr-fr', {
@@ -48,17 +44,15 @@ export default async function MicrofictionPage({
   }
   return (
     <MicrofictionsContextProvider value={{ isGingkoBiloba: GingkoBiloba }}>
-      <div className="card">
-        <Modal>
-          <div>{finalDisplayDate}</div>
-          <div>{Heure}</div>
-          <article>
-            <BlockRendererClient content={Texte_microfiction} />
-          </article>
-          <div>{GingkoBiloba}</div>
-          <div>{linkToShare}</div>
-        </Modal>
-      </div>
+      <Modal>
+        <div>{finalDisplayDate}</div>
+        <div>{Heure}</div>
+        <article>
+          <BlockRendererClient content={Texte_microfiction} />
+        </article>
+        <div>{GingkoBiloba}</div>
+        <div>{linkToShare}</div>
+      </Modal>
       <Confettis />
     </MicrofictionsContextProvider>
   )

@@ -1,10 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
 import {
-  useMicrofictionsContext,
-  MicrofictionsContextProvider,
-} from '@/contexts/microfictions.context'
-import {
   Button,
   Dialog,
   DialogPanel,
@@ -47,12 +43,14 @@ const Modal = ({ children }: { children: React.ReactNode }) => {
   const displayContent = children[2].props.children
     ? children[2].props.children.props.content
     : null
-  const isGinkgobiloba = children[3].props.children
-    ? children[3].props.children
-    : null
+
+  const truncateContent = (content) =>
+    content?.length > 160 ? `${content.substring(0, 155)}...` : content
+
+  const truncatedDisplayContent = truncateContent(displayContent.join())
 
   return (
-    <MicrofictionsContextProvider value={{ isGingkoBiloba: isGinkgobiloba }}>
+
       <Transition appear show={isOpen}>
         <Dialog
           as="div"
@@ -82,18 +80,18 @@ const Modal = ({ children }: { children: React.ReactNode }) => {
                 leaveTo="opacity-0 scale-[0]"
               >
                 {/* <!-- HERE IS THE CONTENT --> */}
-                <div className="dialog-panel-wrapper bg-white min-w-96 rounded-2xl">
+                <div className="dialog-panel-wrapper bg-white min-w-[28rem] rounded-2xl">
                   <h3 className="text-2xl first-letter:uppercase text-left leading-16 relative mt-4 mx-8">
                     {displayDate}
                     <div className="text-xl">{displayHour}</div>
                   </h3>
-                                     
-                    {/* <TwitterShare
-                      url={currentUrl}
-                      title="Places de La Réunion..."
-                      hashtags={['microfiction', 'paris20']}
-                    /> */}
-                  
+
+                  {/* <TwitterShare
+                    url={currentUrl}
+                    // title={`Places de La Réunion - ${displayDate} - ${displayHour} \n`}
+                    title={`Places de La Réunion - ${displayDate} - ${displayHour} \n${truncatedDisplayContent}`}
+                    hashtags={['microfiction', 'paris20']}
+                  /> */}
 
                   <DialogPanel className="dialog-reunion w-full max-w-md font-typewriter transform text-left align-middle transition-all px-8 ">
                     <div className="mt-2 pb-4 text-lg">{displayContent}</div>
@@ -104,7 +102,7 @@ const Modal = ({ children }: { children: React.ReactNode }) => {
           </div>
         </Dialog>
       </Transition>
-    </MicrofictionsContextProvider>
+
   )
 }
 export default Modal
