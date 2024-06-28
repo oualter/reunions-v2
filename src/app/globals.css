@@ -165,6 +165,22 @@ nav#main-navigation > ul ul li a {
   display: block;
   margin: 1rem;
 }
+.submenuLayer {
+  display: none;
+}
+.open .submenuLayer {
+  display: block;
+}
+.submenuLayer {
+  width: 20rem;
+  white-space: wrap;
+  background-color: #fff;
+  padding: 1rem 1.5rem;
+  box-shadow: 5px 5px 15px -6px #000;
+}
+.submenuLayer p {
+  margin-top: 1rem;
+}
 
 #sidebar-navigation > ul > li {
   /* outline: 2px solid red; */
@@ -438,8 +454,8 @@ main > *:not(section) {
   margin: 1.5rem 0;
 }
 .map-page h1 {
-    @apply text-4xl text-center my-8;
-  }
+  @apply text-4xl text-center my-8;
+}
 @media (max-width: 768px) {
   .map-page h1 {
     @apply text-2xl;

@@ -31,7 +31,7 @@ export default function SiteHeader() {
   return (
     <>
       {!isHomepage ? (
-        <Link href="/" className="grow sm:basis-2/3">
+        <Link href="/" className="grow sm:basis-3/5">
           <div className="uppercase whitespace-nowrap sm:text-6xl text-2xl">
             Places de la Réunion
             <div className="sm:text-3xl text-sm">

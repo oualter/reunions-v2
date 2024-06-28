@@ -13,18 +13,21 @@ import { chapitres } from '../data'
 export default function NavBar() {
   const [isOpen, setOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuModeEmploiOpen, setIsMenuModeEmploiOpen] = useState(false)
   const toggleClass = () => {
     setOpen(!isOpen)
   }
   const handleSubMenu = () => {
-    console.log('isMenuOpen => ', isMenuOpen)
     setIsMenuOpen(!isMenuOpen)
+  }
+  const handleSubMenuModeEmploi = () => {
+    setIsMenuModeEmploiOpen(!isMenuModeEmploiOpen)
   }
 
   return (
     <nav
       id="main-navigation"
-      className={isOpen ? 'open md:basis-1/3' : 'close relative md:basis-1/3'}
+      className={isOpen ? 'open md:basis-1/3' : 'close relative md:basis-2/5'}
       aria-label="main"
     >
       <HiOutlineMenu
@@ -64,6 +67,26 @@ export default function NavBar() {
               </li>
             ))}
           </ul>
+        </li>
+        <li onClick={handleSubMenuModeEmploi}
+          className={
+            isMenuModeEmploiOpen ? 'open' : 'close'
+          }>
+          <NavLink href="#">Mode d&apos;emploi</NavLink>
+          <div className="submenuLayer absolute ">
+            <p>Promenez-vous sur la place</p>
+            <p>
+              Quand vous le souhaitez, vous cliquez sur un point : court ou
+              long, un instant de vie vous sera proposé.
+            </p>
+            <p>
+              Vous pouvez aussi jouer avec le temps, glisser de saison en
+              saison, de mois en mois, grâce à l&apos;onglet sur la gauche : aux
+              hivers préhistoriques répondront alors les hivers futuristes, et
+              les canicules d&apos;aujourd&apos;hui s&apos;entremêleront aux
+              voix estivales du passé.
+            </p>
+          </div>
         </li>
         <li>
           <NavLink href="/le-livre/">Le livre (PDF)</NavLink>
