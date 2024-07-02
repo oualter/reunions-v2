@@ -40,7 +40,7 @@ export default function SiteHeader() {
           </div>
         </Link>
       ) : (
-        <h1 className="uppercase whitespace-nowrap sm:text-6xl text-3xl sm:grow sm:basis-2/3">
+        <h1 className="uppercase whitespace-nowrap sm:text-6xl text-2xl sm:grow sm:basis-2/3">
           Places de la Réunion
           <div className="sm:text-3xl text-base">
             Heureusement que le ginkgo biloba

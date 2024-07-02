@@ -6,10 +6,10 @@ import { usePathname } from 'next/navigation'
 export default function NavLink({ children, href, prefetch }: LinkPropsType) {
   const pathname = usePathname()
   if (href === pathname) {
-    return <span className="text-base">{children}</span>
+    return <span>{children}</span>
   }
   return (
-    <Link href={href} prefetch={prefetch} className="text-base hover:font-bold">
+    <Link href={href} prefetch={prefetch} className="hover:font-bold">
       {children}
     </Link>
   )

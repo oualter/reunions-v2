@@ -133,6 +133,12 @@ nav#main-navigation {
   white-space: nowrap;
   width: 100%;
 }
+nav#main-navigation a, nav#main-navigation span {
+  @apply text-base
+}
+/* nav#main-navigation .a-propos a {
+  @apply text-3xl
+} */
 
 nav#main-navigation > ul {
   position: relative;
@@ -165,25 +171,28 @@ nav#main-navigation > ul ul li a {
   display: block;
   margin: 1rem;
 }
-.submenuLayer {
-  display: none;
-}
-.open .submenuLayer {
-  display: block;
-}
-.submenuLayer {
+nav#main-navigation .submenuLayer {
+  z-index: 10;
   width: 20rem;
   white-space: wrap;
   background-color: #fff;
+  overflow: hidden;
+  position: absolute;
+  transition: height 0.3s ease-in;
+}
+nav#main-navigation .close > .submenuLayer {
+  height: 0;
+}
+nav#main-navigation .open > .submenuLayer {
+  height: 370px;
   padding: 1rem 1.5rem;
   box-shadow: 5px 5px 15px -6px #000;
 }
-.submenuLayer p {
+nav#main-navigation .submenuLayer p {
   margin-top: 1rem;
 }
 
 #sidebar-navigation > ul > li {
-  /* outline: 2px solid red; */
   width: 170px;
 }
 #sidebar-navigation > ul > li svg {
@@ -442,7 +451,7 @@ main > *:not(section) {
 
 /* pages génériques */
 .generic-content h2 {
-  @apply text-2xl my-4;
+  @apply text-xl my-4;
 }
 .generic-content li {
   @apply list-disc ml-4;

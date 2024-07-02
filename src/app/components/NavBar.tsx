@@ -68,12 +68,12 @@ export default function NavBar() {
             ))}
           </ul>
         </li>
-        <li onClick={handleSubMenuModeEmploi}
-          className={
-            isMenuModeEmploiOpen ? 'open' : 'close'
-          }>
+        <li
+          onClick={handleSubMenuModeEmploi}
+          className={isMenuModeEmploiOpen ? 'open' : 'close'}
+        >
           <NavLink href="#">Mode d&apos;emploi</NavLink>
-          <div className="submenuLayer absolute ">
+          <div className="submenuLayer">
             <p>Promenez-vous sur la place</p>
             <p>
               Quand vous le souhaitez, vous cliquez sur un point : court ou
@@ -88,13 +88,13 @@ export default function NavBar() {
             </p>
           </div>
         </li>
-        <li>
+        {/* <li>
           <NavLink href="/le-livre/">Le livre (PDF)</NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink href="/contact/">Contact</NavLink>
         </li>
-        <li>
+        <li className="a-propos">
           <NavLink href="/a-propos/">&Agrave; propos</NavLink>
         </li>
       </ul>
