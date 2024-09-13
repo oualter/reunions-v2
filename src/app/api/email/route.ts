@@ -6,7 +6,12 @@ export async function POST(request: NextRequest) {
   const { usermail, username, usermessage } = await request.json()
 
   const transport = nodemailer.createTransport({
-    service: 'gmail',
+    // service: 'gmail',
+    host: 'mail.gmx.com',
+    // port: 587,
+    // secure: false,
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.MY_EMAIL,
       pass: process.env.MY_PASSWORD,
@@ -16,8 +21,8 @@ export async function POST(request: NextRequest) {
   const mailOptions: Mail.Options = {
     from: process.env.MY_EMAIL,
     to: process.env.MY_EMAIL,
-    // cc: email, (uncomment this line if you want to send a copy to the sender)
-    subject: `Message from ${username} (${usermail})`,
+    cc: process.env.CC_EMAIL_MESSAGE,
+    subject: `|| GINGKO BILOBA || Message de ${username} (${usermail})`,
     text: usermessage,
   }
 
