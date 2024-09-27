@@ -35,7 +35,6 @@ export async function generateMetadata({
 }: {
   params: Props
 }): Promise<Metadata> {
-
   const slug = params.slug
   const pageTitleObj = chapitres.filter((elt) => {
     return elt.month === slug
@@ -51,8 +50,6 @@ export async function generateMetadata({
 }
 
 export default async function showFictions({ params }) {
-  console.log('page de MOIS !!!!')
-
   const microF = await GetMicroFictions()
   const { slug } = params
   const slugArray = await generateStaticParams()

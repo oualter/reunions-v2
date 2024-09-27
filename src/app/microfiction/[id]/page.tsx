@@ -7,7 +7,7 @@ import { GetMicroFictions } from '../../../lib/microfictions'
 
 import type { Metadata } from 'next'
 
-export function generateDateContent(dateToCompute: string) {
+function generateDateContent(dateToCompute: string): string {
   let MFDay = dateToCompute.split('/')[0]
   let MFMonth = dateToCompute.split('/')[1]
   let MFYear = dateToCompute.split('/')[2]

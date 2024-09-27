@@ -23,7 +23,7 @@ const Modal = ({
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setCurrentUrl(window.location.href)
-      console.log('currentUrl => ', currentUrl)
+      // console.log('currentUrl => ', currentUrl)
     }
   }, [])
 
@@ -105,7 +105,7 @@ const Modal = ({
               leaveTo="opacity-0 scale-[0]"
             >
               {/* <!-- HERE IS THE CONTENT --> */}
-              <div className="dialog-panel-wrapper bg-white min-w-[28rem] rounded-2xl">
+              <div className="dialog-panel-wrapper bg-white max-w-[28rem] rounded-2xl">
                 {/* <h3 className="text-2xl first-letter:uppercase text-left leading-16 relative mt-4 mx-8">
                   {displayDate}
                   <div className="text-xl">{displayHour}</div>
