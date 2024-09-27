@@ -1,8 +1,14 @@
 import SideBar from '@/components/SideBar'
 import BlockRendererClient from '../components/BlockRendererClient'
-
-export const metadata = {
+import { baseURL } from '../../lib/meta'
+import type { Metadata } from 'next'
+export const metadata: Metadata = {
   title: 'Mentions légales',
+  description:
+    'L’accès et la consultation de ce site Internet sont soumis aux présentes mentions légales ainsi qu’aux lois et règlements applicables ✅ 16.51 Ouest',
+  alternates: {
+    canonical: `${baseURL}/mentions-legales`,
+  },
 }
 
 const CMS_URL = process.env.CMS_URL

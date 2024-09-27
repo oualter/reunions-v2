@@ -1,14 +1,13 @@
 import { MicrofictionsContextProvider } from '@/contexts/microfictions.context'
+import { baseURL } from '../../lib/meta'
 import ImagePlaceHolder from '@/components/ImagePlaceHolder'
 import PinsList from '@/components/PinsList'
 import SideBar from '@/components/SideBar'
-// import Modal from '@/components/Modal'
-import Modal from '@/components/Modal'
-// import YearsSlider from '../components/YearsSlider.tsx'
 import Confettis from '@/components/Confettis'
 import { GetMicroFictions } from '../../lib/microfictions'
 import { chapitres } from '@/data'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 
 export async function generateStaticParams() {
   return [
@@ -27,11 +26,35 @@ export async function generateStaticParams() {
   ]
 }
 
+type Props = {
+  slug: string
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Props
+}): Promise<Metadata> {
+
+  const slug = params.slug
+  const pageTitleObj = chapitres.filter((elt) => {
+    return elt.month === slug
+  })
+  const pageTitleMeta = pageTitleObj[0].title
+  return {
+    title: `Microfictions du ${pageTitleMeta}`,
+    description: `Promenez-vous sur la place de la Réunion et découvrez un instant de vie passé, présent ou futur ✅ 16.51 Ouest`,
+    alternates: {
+      canonical: `${baseURL}/${slug}`,
+    },
+  }
+}
+
 export default async function showFictions({ params }) {
+  console.log('page de MOIS !!!!')
+
   const microF = await GetMicroFictions()
-
   const { slug } = params
-
   const slugArray = await generateStaticParams()
   const isSlugOK = slugArray.some((elt) => {
     return elt.slug === slug
@@ -106,8 +129,6 @@ export default async function showFictions({ params }) {
           <PinsList />
         </article>
         <SideBar />
-        {/* <YearsSlider /> */}
-        {/* <Modal /> */}
       </section>
       <Confettis />
     </MicrofictionsContextProvider>

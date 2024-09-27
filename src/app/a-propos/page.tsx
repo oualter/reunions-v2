@@ -1,8 +1,14 @@
 import SideBar from '@/components/SideBar'
 import BlockRendererClient from '../components/BlockRendererClient'
-// import { metadata } from 'next'
-export const metadata = {
+import { baseURL } from '../../lib/meta'
+import type { Metadata } from 'next'
+export const metadata: Metadata = {
   title: 'À propos',
+  description:
+    '"Places de la Réunion" est un objet multimédia issu de l\'atelier d\'écriture "écrire, explorer" ✅ 16.51 Ouest',
+  alternates: {
+    canonical: `${baseURL}/a-propos`,
+  },
 }
 
 const CMS_URL = process.env.CMS_URL

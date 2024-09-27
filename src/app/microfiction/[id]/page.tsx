@@ -1,30 +1,17 @@
 import { MicrofictionsContextProvider } from '@/contexts/microfictions.context'
-
+import { baseURL } from '../../../lib/meta'
 import Modal from '@/components/Modal'
 import BlockRendererClient from '@/components/BlockRendererClient'
 import Confettis from '@/components/Confettis'
 import { GetMicroFictions } from '../../../lib/microfictions'
 
-export default async function MicrofictionPage({
-  params: { id },
-}: {
-  params: { id: string }
-}) {
-  console.log('PAGE : src > app > microfiction > [id] > page.tsx')
-  const microF = await GetMicroFictions()
-  const { microfictions } = microF
-  const thisMF = microfictions.find((elt) => {
-    return elt.id == id
-  })!
+import type { Metadata } from 'next'
 
-  const { Heure, Texte_microfiction, GingkoBiloba } = thisMF
-  let MFDay = thisMF.Date.split('/')[0]
-  let MFMonth = thisMF.Date.split('/')[1]
-  let MFYear = thisMF.Date.split('/')[2]
-  const linkToShare = '/microfiction/' + thisMF.id
-
-  const dateToBeFormatted =
-    MFYear + '-' + MFMonth + '-' + MFDay /*+ 'T' + mfHour+':00'*/
+export function generateDateContent(dateToCompute: string) {
+  let MFDay = dateToCompute.split('/')[0]
+  let MFMonth = dateToCompute.split('/')[1]
+  let MFYear = dateToCompute.split('/')[2]
+  const dateToBeFormatted = MFYear + '-' + MFMonth + '-' + MFDay
   let displayDate = new Date(dateToBeFormatted).toLocaleDateString('fr-fr', {
     weekday: 'long',
     year: 'numeric',
@@ -42,10 +29,59 @@ export default async function MicrofictionPage({
   } else {
     finalDisplayDate = displayDate
   }
+  return finalDisplayDate
+}
+
+const truncateContent = (content) =>
+  content?.length > 160 ? `${content.substring(0, 155)}...` : content
+
+export async function generateMetadata({
+  params: { id },
+}: {
+  params: { id: string }
+}): Promise<Metadata> {
+  const microF = await GetMicroFictions()
+  const { microfictions } = microF
+  const thisMF = microfictions.find((elt) => {
+    return elt.id == id
+  })!
+  let isGingkoBiloba = thisMF.Texte_microfiction[0].includes('biloba')
+  const dateToDisplay = generateDateContent(thisMF.Date)
+  const truncatedContentToDisplay = isGingkoBiloba
+    ? truncateContent(thisMF.Texte_microfiction[0]) + ' 🦄 🌈 🚀 🌍'
+    : truncateContent(thisMF.Texte_microfiction[0])
+
+  return {
+    title: isGingkoBiloba
+      ? `Microfiction du ${dateToDisplay}, place de la Réunion` + ' 🌈🌈🌈 '
+      : `Microfiction du ${dateToDisplay}, place de la Réunion`,
+    description: `${truncatedContentToDisplay} `,
+    alternates: {
+      canonical: `${baseURL}/microfiction/${id}`,
+    },
+  }
+}
+
+export default async function MicrofictionPage({
+  params: { id },
+}: {
+  params: { id: string }
+}) {
+  const microF = await GetMicroFictions()
+  const { microfictions } = microF
+  const thisMF = microfictions.find((elt) => {
+    return elt.id == id
+  })!
+
+  const { Heure, Texte_microfiction, GingkoBiloba } = thisMF
+  const finalDateToDisplay = generateDateContent(thisMF.Date)
+
+  const linkToShare = '/microfiction/' + thisMF.id
+
   return (
     <MicrofictionsContextProvider value={{ isGingkoBiloba: GingkoBiloba }}>
-      <Modal>
-        <div>{finalDisplayDate}</div>
+      <Modal isParallelRoute={true}>
+        <div>{finalDateToDisplay}</div>
         <div>{Heure}</div>
         <article>
           <BlockRendererClient content={Texte_microfiction} />

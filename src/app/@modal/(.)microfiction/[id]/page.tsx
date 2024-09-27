@@ -4,14 +4,14 @@ import BlockRendererClient from '@/components/BlockRendererClient'
 import Modal from '@/components/Modal'
 import { GetMicroFictions } from '../../../../lib/microfictions'
 import Confettis from '@/components/Confettis'
-import React from 'react'
+
 
 export default async function MicrofictionModal({
   params: { id: id },
 }: {
   params: { id: number }
 }) {
-  console.log('PAGE : src > app > @modal > (.)microfiction > [id] > page.tsx')
+  // console.log('PAGE : src > app > @modal > (.)microfiction > [id] > page.tsx')
   const microF = await GetMicroFictions()
   const { microfictions } = microF
   const thisMF = microfictions.find((elt) => {

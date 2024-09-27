@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
-import { type MetadataType } from '@/typescript/types'
+import type { Metadata } from 'next'
 import '@/globals.css'
+import { baseURL } from '../lib/meta'
 import NavBar from '@/components/NavBar'
-// import SideBar from '@/components/SideBar'
 import FooterBar from '@/components/FooterBar'
 import SiteHeader from '@/components/SiteHeader'
 
@@ -11,18 +11,19 @@ type LayoutProps = {
   modal: React.ReactNode
 }
 
-export const metadata: MetadataType = {
+export const metadata: Metadata = {
   title: {
-    default: 'Places de la Réunion',
-    template: '%s | Places de la Réunion',
+    default: 'Places de la Réunion @ Jeu / cartographie littéraire 16.51 Ouest',
+    template: '%s @ 16.51 Ouest',
   },
-  description:
-    "Jeu littéraire de l'atelier d'écriture 16.51 Ouest - édition 2022-23",
-  robots: 'noindex, nofollow',
+  description: `Objet multimédia issu de l'atelier d'écriture "écrire, explorer" - Cartographie de microfictions se déroulant place de la Réunion dans le 20e arrondissement de Paris`,
+  // robots: 'noindex, nofollow',
+  alternates: {
+    canonical: `${baseURL}`,
+  },
 }
 
 export default function RootLayout({ children, modal }: LayoutProps) {
-  // console.log('modal => ', modal)
   return (
     <html lang="fr">
       <body className="container flex flex-col min-h-screen mx-auto pb-2">
@@ -36,7 +37,6 @@ export default function RootLayout({ children, modal }: LayoutProps) {
           {children}
           {modal}
         </main>
-
         <FooterBar />
       </body>
     </html>

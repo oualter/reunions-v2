@@ -12,18 +12,21 @@ export default async function ImagePlaceHolder(props) {
   const defaultImgMapJson = await defaultImgMap.json()
   let defaultImgMapUrl = await defaultImgMapJson.imageToPinOnUrl
   if (defaultImgMapUrl.includes('localhost')) {
-    defaultImgMapUrl = defaultImgMapUrl.replace('localhost','127.0.0.1')
+    defaultImgMapUrl = defaultImgMapUrl.replace('localhost', '127.0.0.1')
   }
 
   return (
-        <Image
-          src={defaultImgMapUrl}
-          width={1080}
-          height={927}
-          priority={true}
-          // unoptimized={true}
-          alt="Place de La Réunion"
-          className="relative"
-        />
+    <Image
+      src={defaultImgMapUrl}
+      width={1080}
+      height={927}
+      priority={true}
+      // placeholder="blur"
+      // sizes="(min-width: 808px) 66%, 100vw"
+      // fill
+      // unoptimized={true}
+      alt="Place de La Réunion"
+      className="relative"
+    />
   )
 }

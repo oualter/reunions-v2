@@ -1,5 +1,5 @@
 'use client'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { sendEmail } from '../../lib/send-email'
 
@@ -13,7 +13,10 @@ const Contact: FC = () => {
   const { register, handleSubmit } = useForm<FormData>()
 
   function onSubmit(data: FormData) {
-    sendEmail(data)
+  //  sendEmail(data)
+   const sendMailResponse = sendEmail(data)
+  //   console.log('sendMailResponse !!')
+    console.log('sendMailResponse ==> ', sendMailResponse)
   }
 
   return (
