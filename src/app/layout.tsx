@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${baseURL}`,
   },
+  verification: {
+    google: 'iqI9gbLluftrA7JgD6uc7cmfhDLKd9T3tg7Hc6ObjXM',
+  },
 }
 
 export default function RootLayout({ children, modal }: LayoutProps) {
