@@ -431,16 +431,16 @@ main > *:not(section) {
 }
 .dialog-panel-wrapper {
   background: transparent url(../../public/img/rip.svg) no-repeat 0 100%;
-  background-position-y: -84px;
+  /* background-position-y: -84px; */
 }
 .dialog-reunion {
   scrollbar-width: thin;
   scrollbar-color: rgba(59, 46, 5, 0.3);
-  height: 47vh;
+  max-height: 43vh;
   overflow-y: auto;
   padding-bottom: 1rem;
   /* margin-top: 1rem; */
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
   /* outline: 5px solid red; */
 }
 /* .dialog-reunion h3 {

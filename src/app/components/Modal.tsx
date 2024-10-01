@@ -59,12 +59,12 @@ const Modal = ({
   )
 
   let titleDisplay = !isParallelRoute ? (
-    <h2 className="text-2xl first-letter:uppercase text-left leading-16 relative mt-4 mx-8">
+    <h2 className="text-2xl first-letter:uppercase text-left leading-16 relative mt-8 mx-8">
       {displayDate}, place de la Réunion,&nbsp;
       <div className="text-xl">{displayHour}</div>
     </h2>
   ) : (
-    <h1 className="text-2xl first-letter:uppercase text-left leading-16 relative mt-4 mx-8">
+    <h1 className="text-2xl first-letter:uppercase text-left leading-16 relative mt-8 mx-8">
       {displayDate}, place de la Réunion,&nbsp;
       <div className="text-xl">{displayHour}</div>
     </h1>
@@ -105,7 +105,7 @@ const Modal = ({
               leaveTo="opacity-0 scale-[0]"
             >
               {/* <!-- HERE IS THE CONTENT --> */}
-              <div className="dialog-panel-wrapper bg-white max-w-[28rem] rounded-2xl">
+              <div className="dialog-panel-wrapper  max-w-[28rem] rounded-2xl">
                 {/* <h3 className="text-2xl first-letter:uppercase text-left leading-16 relative mt-4 mx-8">
                   {displayDate}
                   <div className="text-xl">{displayHour}</div>
