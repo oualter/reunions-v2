@@ -16,7 +16,7 @@ type ConfettisType = {
   isGingkoBiloba: boolean
 }
 
-console.log('je suis le fichier confettis.tsx')
+// console.log('je suis le fichier confettis.tsx')
 
 const Confettis = () => {
   let { isShowConfettis, isGingkoBiloba, initConfettis }: ConfettisType =

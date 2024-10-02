@@ -5,15 +5,32 @@ import Modal from '@/components/Modal'
 import { GetMicroFictions } from '../../../../lib/microfictions'
 import Confettis from '@/components/Confettis'
 
+export async function generateStaticParams() {
+  const microF = await GetMicroFictions()
+  const { microfictions } = microF
+  return microfictions.map((post) => {
+    // console.log('post.id => ', post.id)
+    return[ {
+      id: post.id.toString(),
+    }]
+  })
+}
 
 export default async function MicrofictionModal({
-  params: { id: id },
+  params,
 }: {
-  params: { id: number }
+  params: { id: any }
 }) {
+  // export default async function MicrofictionModal({
+  //   params: { id: id },
+  // }: {
+  //   params: { id: number }
+  // }) {
+  // console.log('params !!!! => ', params)
   // console.log('PAGE : src > app > @modal > (.)microfiction > [id] > page.tsx')
   const microF = await GetMicroFictions()
   const { microfictions } = microF
+  const { id } = params
   const thisMF = microfictions.find((elt) => {
     return elt.id == id
   })!

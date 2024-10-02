@@ -35,13 +35,25 @@ function generateDateContent(dateToCompute: string): string {
 const truncateContent = (content) =>
   content?.length > 160 ? `${content.substring(0, 155)}...` : content
 
+export async function generateStaticParams() {
+  const microF = await GetMicroFictions()
+  const { microfictions } = microF
+  return microfictions.map((post) => {
+    // console.log('post.id => ', post.id)
+    return {
+      id: post.id.toString(),
+    }
+  })
+}
+
 export async function generateMetadata({
-  params: { id },
+  params,
 }: {
-  params: { id: string }
+  params: { id: number }
 }): Promise<Metadata> {
   const microF = await GetMicroFictions()
   const { microfictions } = microF
+  const { id } = params
   const thisMF = microfictions.find((elt) => {
     return elt.id == id
   })!
@@ -63,12 +75,13 @@ export async function generateMetadata({
 }
 
 export default async function MicrofictionPage({
-  params: { id },
+  params,
 }: {
-  params: { id: string }
+  params: { id: number }
 }) {
   const microF = await GetMicroFictions()
   const { microfictions } = microF
+  const { id } = params
   const thisMF = microfictions.find((elt) => {
     return elt.id == id
   })!
