@@ -40,11 +40,11 @@ export default function NavBar() {
         className="close-btn sm:hidden cursor-pointer xl:static fixed top-4 right-2 md:right-16 lg:right-12"
         onClick={toggleClass}
       />
-      <ul className="hidden md:flex h-auto md:w-full w-full bg-white xl:bg-transparent">
+      <ul className="hidden lg:flex h-auto lg:w-full w-full bg-white xl:bg-transparent">
         <li
           onClick={handleSubMenu}
           className={
-            isMenuOpen ? 'lg:hidden chapters open' : 'lg:hidden chapters close'
+            isMenuOpen ? 'xl:hidden chapters open' : 'xl:hidden chapters close'
           }
         >
           <NavLink href="#">
