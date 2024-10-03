@@ -47,7 +47,7 @@ export default function SideBar() {
               <li key={chapitre.id}>
                 <Link
                   className="sm:text-base hover:font-bold"
-                  href={chapitre.month + `/`}
+                  href={chapitre.month}
                 >
                   {chapitre.title.replace(', Place de la Réunion,', ', ')}
                 </Link>

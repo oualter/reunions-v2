@@ -60,7 +60,7 @@ export default function NavBar() {
               <li key={chapitre.id}>
                 <Link
                   className="sm:text-base hover:font-bold"
-                  href={chapitre.month + `/`}
+                  href={chapitre.month}
                 >
                   {chapitre.title.replace(', Place de la Réunion,', ', ')}
                 </Link>
@@ -92,10 +92,10 @@ export default function NavBar() {
           <NavLink href="/le-livre/">Le livre (PDF)</NavLink>
         </li> */}
         <li>
-          <NavLink href="/contact/">Contact</NavLink>
+          <NavLink href="/contact">Contact</NavLink>
         </li>
         <li className="a-propos">
-          <NavLink href="/a-propos/">&Agrave; propos</NavLink>
+          <NavLink href="/a-propos">&Agrave; propos</NavLink>
         </li>
       </ul>
     </nav>
