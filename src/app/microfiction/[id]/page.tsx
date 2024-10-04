@@ -7,6 +7,9 @@ import { GetMicroFictions } from '../../../lib/microfictions'
 
 import type { Metadata } from 'next'
 
+export const dynamicParams = true
+export const dynamic = 'force-static'
+
 function generateDateContent(dateToCompute: string): string {
   let MFDay = dateToCompute.split('/')[0]
   let MFMonth = dateToCompute.split('/')[1]
@@ -38,18 +41,16 @@ const truncateContent = (content) =>
 export async function generateStaticParams() {
   const microF = await GetMicroFictions()
   const { microfictions } = microF
-  return microfictions.map((post) => {
-    // console.log('post.id => ', post.id)
-    return {
-      id: post.id.toString(),
-    }
-  })
+  const MFStaticParams = microfictions.map((post) => ({
+    id: post.id.toString(),
+  }))
+  return MFStaticParams
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: { id: number }
+  params: { id: string }
 }): Promise<Metadata> {
   const microF = await GetMicroFictions()
   const { microfictions } = microF

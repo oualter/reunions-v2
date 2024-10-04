@@ -59,14 +59,14 @@ const Modal = ({
   )
 
   let titleDisplay = !isParallelRoute ? (
-    <h2 className="text-2xl first-letter:uppercase text-left leading-16 relative mt-8 mx-8">
-      {displayDate}, place de la Réunion,&nbsp;
-      <div className="text-xl">{displayHour}</div>
+    <h2 className="text-2xl first-letter:uppercase text-left leading-16 relative whitespace-nowrap mt-8 mx-8">
+      {displayDate}, {displayHour},
+      <div className="text-xl">place de la Réunion</div>
     </h2>
   ) : (
-    <h1 className="text-2xl first-letter:uppercase text-left leading-16 relative mt-8 mx-8">
-      {displayDate}, place de la Réunion,&nbsp;
-      <div className="text-xl">{displayHour}</div>
+    <h1 className="text-2xl first-letter:uppercase text-left leading-16 relative whitespace-nowrap mt-8 mx-8">
+      {displayDate}, {displayHour},
+      <div className="text-xl">place de la Réunion</div>
     </h1>
   )
 

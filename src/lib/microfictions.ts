@@ -1,5 +1,4 @@
 import 'server-only'
-import qs from 'qs'
 import { notFound } from 'next/navigation'
 import type { PinType, PinAttributesType } from '@/typescript/types'
 
@@ -49,13 +48,17 @@ export async function GetMicroFictions() {
   }
 }
 
-async function fetchMF(parameters: { fields: string[]; sort: string[] }) {
+async function fetchMF(params: { fields: string[]; sort: string[] }) {
   const url = `${CMS_URL}/api/microfictions?` + { encodeValuesOnly: true }
-  const response = await fetch(url, {
+  const response = await fetch(
+    url,
+    // { cache: 'force-cache' }
+    /*{
     next: {
       tags: [CACHE_TAG_REUNION],
     },
-  })
+  }*/
+  )
   if (!response.ok) {
     if (response.status === 404) {
       notFound()
