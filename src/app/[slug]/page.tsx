@@ -39,6 +39,11 @@ export async function generateMetadata({
   const pageTitleObj = chapitres.filter((elt) => {
     return elt.month === slug
   })
+  console.log('pageTitleObj => ', pageTitleObj)
+  if (pageTitleObj.length < 1) {
+    notFound()
+  }
+
   const pageTitleMeta = pageTitleObj[0].title
   return {
     title: `Microfictions du ${pageTitleMeta}`,

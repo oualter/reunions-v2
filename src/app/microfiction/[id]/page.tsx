@@ -6,6 +6,8 @@ import Confettis from '@/components/Confettis'
 import { GetMicroFictions } from '../../../lib/microfictions'
 
 import type { Metadata } from 'next'
+import { error } from 'console'
+import { notFound } from 'next/navigation'
 
 export const dynamicParams = true
 export const dynamic = 'force-static'
@@ -56,9 +58,13 @@ export async function generateMetadata({
   const { microfictions } = microF
   const { id } = params
   const thisMF = microfictions.find((elt) => {
+    // console.log('elt.id => ', elt.id)
     return elt.id == id
   })!
-  let isGingkoBiloba = thisMF.Texte_microfiction[0].includes('biloba')
+  console.log('thisMF => ', thisMF)
+  if (!thisMF) notFound();
+    let isGingkoBiloba = thisMF.Texte_microfiction[0]?.includes('biloba')
+  // let isGingkoBiloba = thisMF.Texte_microfiction[0]?.includes('biloba')
   const dateToDisplay = generateDateContent(thisMF.Date)
   const truncatedContentToDisplay = isGingkoBiloba
     ? truncateContent(thisMF.Texte_microfiction[0]) + ' 🦄 🌈 🚀 🌍'
