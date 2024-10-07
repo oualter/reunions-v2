@@ -49,21 +49,24 @@ export async function GetMicroFictions() {
 }
 
 async function fetchMF(params: { fields: string[]; sort: string[] }) {
+  console.log('FETCHMF!!!!!')
   const url = `${CMS_URL}/api/microfictions?` + { encodeValuesOnly: true }
   const response = await fetch(
     url,
     // { cache: 'force-cache' }
-    /*{
-    next: {
-      tags: [CACHE_TAG_REUNION],
-    },
-  }*/
+    {
+      next: {
+        tags: [CACHE_TAG_REUNION],
+      },
+    }
   )
+  console.log('getch MF Response => ', response.status)
   if (!response.ok) {
     if (response.status === 404) {
       notFound()
     }
     throw new Error(`CMS returned ${response.status} for ${url}`)
   }
+  // console.log('RESPONSE => ', await response.status)
   return await response.json()
 }

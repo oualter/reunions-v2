@@ -1,4 +1,4 @@
-export default function NotFound() {
+export default function notFound() {
   return (
     <div className="m-auto space-y-5 text-center">
       <h1 className="text-3xl font-bold">Not Found</h1>

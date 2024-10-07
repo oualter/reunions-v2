@@ -30,6 +30,8 @@ type Props = {
   slug: string
 }
 
+export const dynamicParams = false
+
 export async function generateMetadata({
   params,
 }: {

@@ -9,7 +9,7 @@ import type { Metadata } from 'next'
 import { error } from 'console'
 import { notFound } from 'next/navigation'
 
-export const dynamicParams = true
+export const dynamicParams = false
 export const dynamic = 'force-static'
 
 function generateDateContent(dateToCompute: string): string {
@@ -62,8 +62,8 @@ export async function generateMetadata({
     return elt.id == id
   })!
   console.log('thisMF => ', thisMF)
-  if (!thisMF) notFound();
-    let isGingkoBiloba = thisMF.Texte_microfiction[0]?.includes('biloba')
+  if (!thisMF) notFound()
+  let isGingkoBiloba = thisMF.Texte_microfiction[0]?.includes('biloba')
   // let isGingkoBiloba = thisMF.Texte_microfiction[0]?.includes('biloba')
   const dateToDisplay = generateDateContent(thisMF.Date)
   const truncatedContentToDisplay = isGingkoBiloba
