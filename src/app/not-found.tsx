@@ -6,7 +6,7 @@ export default function notFound() {
       <p>La page demandée n&apos;existe pas</p>
       <p>
         <Link className="sm:text-base hover:font-bold" href="/">
-          Retournez à l'accueil
+          Retournez à l&apos;accueil
         </Link>
       </p>
     </div>
