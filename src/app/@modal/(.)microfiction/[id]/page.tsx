@@ -7,7 +7,7 @@ import { GetMicroFictions } from '../../../../lib/microfictions'
 import Confettis from '@/components/Confettis'
 
 export const dynamicParams = false
-export const dynamic = 'force-static'
+// export const dynamic = 'force-static'
 
 export async function generateStaticParams() {
   const microF = await GetMicroFictions()
@@ -24,17 +24,10 @@ export default async function MicrofictionModal({
 }: {
   params: { id: string }
 }) {
-  // export default async function MicrofictionModal({
-  //   params: { id: id },
-  // }: {
-  //   params: { id: number }
-  // }) {
-  // console.log('params !!!! => ', params)
-  // console.log('PAGE : src > app > @modal > (.)microfiction > [id] > page.tsx')
   const microF = await GetMicroFictions()
   const { microfictions } = microF
   const { id } = params
-  console.log('microfiction ID => ', id)
+  // console.log('microfiction ID => ', id)
   const thisMF = microfictions.find((elt) => {
     return elt.id == id
   })!

@@ -36,7 +36,7 @@ export default function RootLayout({ children, modal }: LayoutProps) {
             <NavBar />
           </div>
         </header>
-        <main id="main-container" className="grow overflow-hidden ">
+        <main id="main-container" className="grow overflow-hidden">
           {children}
           {modal}
         </main>
