@@ -1,20 +1,8 @@
 import Image from 'next/image'
-
-const CMS_URL = process.env.CMS_URL
+import { imgMapUrl } from '../../lib/utils'
 
 export default async function ImagePlaceHolder(props) {
-  const defaultImgMap = await fetch(CMS_URL + '/pingenerator/mapimage')
-  if (!defaultImgMap.ok) {
-    throw new Error(
-      `CMS returned ${defaultImgMap.status} for ${CMS_URL}/pingenerator/mapimage`
-    )
-  }
-  const defaultImgMapJson = await defaultImgMap.json()
-  let defaultImgMapUrl = await defaultImgMapJson.imageToPinOnUrl
-  if (defaultImgMapUrl.includes('localhost')) {
-    defaultImgMapUrl = defaultImgMapUrl.replace('localhost', '127.0.0.1')
-  }
-
+  const defaultImgMapUrl = await imgMapUrl()
   return (
     <Image
       src={defaultImgMapUrl}

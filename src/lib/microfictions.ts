@@ -49,7 +49,6 @@ export async function GetMicroFictions() {
 }
 
 async function fetchMF(params: { fields: string[]; sort: string[] }) {
-  console.log('FETCHMF!!!!!')
   const url = `${CMS_URL}/api/microfictions?` + { encodeValuesOnly: true }
   const response = await fetch(
     url,
@@ -60,7 +59,7 @@ async function fetchMF(params: { fields: string[]; sort: string[] }) {
       },
     }
   )
-  console.log('getch MF Response => ', response.status)
+  // console.log('getch MF Response => ', response.status)
   if (!response.ok) {
     if (response.status === 404) {
       notFound()

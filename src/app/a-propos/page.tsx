@@ -1,13 +1,29 @@
 import SideBar from '@/components/SideBar'
 import BlockRendererClient from '../components/BlockRendererClient'
 import { baseURL } from '../../lib/meta'
+import { imgMapUrl } from '../../lib/utils'
 import type { Metadata } from 'next'
+
+const defaultImgMapUrl = await imgMapUrl()
 export const metadata: Metadata = {
-  title: 'À propos',
+  title: 'À propos de "Places de la Réunion"',
   description:
     '"Places de la Réunion" est un objet multimédia issu de l\'atelier d\'écriture "écrire, explorer" ✅ 16.51 Ouest',
   alternates: {
     canonical: `${baseURL}/a-propos`,
+  },
+  openGraph: {
+    title: `À propos de "Places de la Réunion" @ 16.51 Ouest`,
+    description:
+      '"Places de la Réunion" est un objet multimédia issu de l\'atelier d\'écriture "écrire, explorer" ✅ 16.51 Ouest',
+    url: `${baseURL}/a-propos`,
+    images: [
+      {
+        url: `${defaultImgMapUrl}`, // Must be an absolute URL
+        width: 1000,
+        height: 858,
+      },
+    ],
   },
 }
 

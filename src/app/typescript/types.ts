@@ -37,11 +37,12 @@ export type PinPropsType = {
   coordY: number
   Date: string
   Heure?: string
-  Texte_mf: string[]
+  // Texte_mf?: string[]
   GingkoBiloba: boolean
-  dateFilter?: string[]
+  // dateFilter?: string[]
   slug?: string
   id?: number | string
+  Texte_microfiction: [string]
 }
 
 export type NamedNodeMap = {

@@ -106,10 +106,6 @@ const Modal = ({
             >
               {/* <!-- HERE IS THE CONTENT --> */}
               <div className="dialog-panel-wrapper  max-w-[28rem] rounded-2xl">
-                {/* <h3 className="text-2xl first-letter:uppercase text-left leading-16 relative mt-4 mx-8">
-                  {displayDate}
-                  <div className="text-xl">{displayHour}</div>
-                </h3> */}
                 {titleDisplay}
                 {/* <p>URL : {currentUrl}</p> */}
                 {/* <TwitterShare

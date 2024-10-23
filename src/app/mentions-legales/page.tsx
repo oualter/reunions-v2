@@ -1,13 +1,28 @@
 import SideBar from '@/components/SideBar'
 import BlockRendererClient from '../components/BlockRendererClient'
 import { baseURL } from '../../lib/meta'
+import { imgMapUrl } from '../../lib/utils'
 import type { Metadata } from 'next'
+
+const defaultImgMapUrl = await imgMapUrl()
 export const metadata: Metadata = {
   title: 'Mentions légales',
   description:
     'L’accès et la consultation de ce site Internet sont soumis aux présentes mentions légales ainsi qu’aux lois et règlements applicables ✅ 16.51 Ouest',
   alternates: {
     canonical: `${baseURL}/mentions-legales`,
+  },
+  openGraph: {
+    title: `Mentions légales @ 16.51 Ouest`,
+    description: `L’accès et la consultation de ce site Internet sont soumis aux présentes mentions légales ainsi qu’aux lois et règlements applicables ✅ 16.51 Ouest`,
+    url: `${baseURL}/mentions-legales`,
+    images: [
+      {
+        url: `${defaultImgMapUrl}`,
+        width: 1000,
+        height: 858,
+      },
+    ],
   },
 }
 

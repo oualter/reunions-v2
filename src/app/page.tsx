@@ -5,7 +5,7 @@ import PinsList from '@/components/PinsList'
 import { GetMicroFictions } from '../lib/microfictions'
 import Confettis from '@/components/Confettis'
 
-export default async function Home() {
+export default async function Home(props) {
   const microF = await GetMicroFictions()
   const { microfictions } = microF
 
@@ -16,7 +16,7 @@ export default async function Home() {
       <section className="map-page relative">
         <article className="img-placeholder image-wrapper lg:w-[1080px] mx-auto relative mix-blend-darken ">
           <ImagePlaceHolder />
-          <PinsList />
+          <PinsList items={microfictions} />
         </article>
         <SideBar />
       </section>

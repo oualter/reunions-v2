@@ -184,7 +184,7 @@ nav#main-navigation .submenuLayer {
   background-color: #fff;
   overflow: hidden;
   position: absolute;
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
 }
 nav#main-navigation .close > .submenuLayer {
   height: 0 !important;
@@ -232,7 +232,7 @@ nav#main-navigation .submenuLayer p {
   height: 0;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.4);
-  transition: height 0.3s ease-in;
+  transition: height 0.2s ease-in;
 }
 #sidebar-navigation > ul > li.open ul {
   height: 600px;
@@ -316,7 +316,7 @@ main#main-container section.map-page,
   /* width: 150px; */
   height: auto;
   margin-top: 60px;
-  z-index: 10000;
+  z-index: 100;
   flex-basis: 170px;
   margin-right: 20px;
   /* margin-right: 150px; */
@@ -336,10 +336,10 @@ textarea {
   @apply shadow-md px-6 py-2 border border-slate-300;
 }
 
-/* #headlessui-portal-root {
+#headlessui-portal-root {
   position: relative;
   z-index: 200;
-} */
+}
 
 .pin {
   position: absolute;

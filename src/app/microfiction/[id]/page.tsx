@@ -1,12 +1,13 @@
 import { MicrofictionsContextProvider } from '@/contexts/microfictions.context'
 import { baseURL } from '../../../lib/meta'
+import { imgMapUrl } from '../../../lib/utils'
+import ImagePlaceHolder from '@/components/ImagePlaceHolder'
 import Modal from '@/components/Modal'
 import BlockRendererClient from '@/components/BlockRendererClient'
 import Confettis from '@/components/Confettis'
 import { GetMicroFictions } from '../../../lib/microfictions'
 
 import type { Metadata } from 'next'
-import { error } from 'console'
 import { notFound } from 'next/navigation'
 
 export const dynamicParams = false
@@ -49,6 +50,7 @@ export async function generateStaticParams() {
   return MFStaticParams
 }
 
+const defaultImgMapUrl = await imgMapUrl()
 export async function generateMetadata({
   params,
 }: {
@@ -61,7 +63,6 @@ export async function generateMetadata({
     // console.log('elt.id => ', elt.id)
     return elt.id == id
   })!
-  console.log('thisMF => ', thisMF)
   if (!thisMF) notFound()
   let isGingkoBiloba = thisMF.Texte_microfiction[0]?.includes('biloba')
   // let isGingkoBiloba = thisMF.Texte_microfiction[0]?.includes('biloba')
@@ -77,6 +78,20 @@ export async function generateMetadata({
     description: `${truncatedContentToDisplay} `,
     alternates: {
       canonical: `${baseURL}/microfiction/${id}`,
+    },
+    openGraph: {
+      title: isGingkoBiloba
+        ? `Microfiction du ${dateToDisplay}, place de la Réunion` + ' 🌈🌈🌈 '
+        : `Microfiction du ${dateToDisplay}, place de la Réunion`,
+      description: `${truncatedContentToDisplay} `,
+      url: `${baseURL}/microfiction/${id}`,
+      images: [
+        {
+          url: `${defaultImgMapUrl}`, // Must be an absolute URL
+          width: 1000,
+          height: 858,
+        },
+      ],
     },
   }
 }
@@ -110,6 +125,7 @@ export default async function MicrofictionPage({
         <div>{linkToShare}</div>
       </Modal>
       <Confettis />
+      <ImagePlaceHolder />
     </MicrofictionsContextProvider>
   )
 }

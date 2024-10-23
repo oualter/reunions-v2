@@ -1,13 +1,28 @@
 import SideBar from '@/components/SideBar'
 import Contact from './../components/ContactForm'
 import { baseURL } from '../../lib/meta'
+import { imgMapUrl } from '../../lib/utils'
 import type { Metadata } from 'next'
+
+const defaultImgMapUrl = await imgMapUrl()
 export const metadata: Metadata = {
   title: 'Nous contacter ',
   description:
     "N'hésitez pas à nous contacter - Nous répondrons à vos questions et demandes d'information ✅ 16.51 Ouest",
   alternates: {
     canonical: `${baseURL}/contact`,
+  },
+  openGraph: {
+    title: `Nous contacter  @ 16.51 Ouest`,
+    description: `N'hésitez pas à nous contacter - Nous répondrons à vos questions et demandes d'information ✅ 16.51 Ouest`,
+    url: `${baseURL}/contact`,
+    images: [
+      {
+        url: `${defaultImgMapUrl}`,
+        width: 1000,
+        height: 858,
+      },
+    ],
   },
 }
 export default function contact() {

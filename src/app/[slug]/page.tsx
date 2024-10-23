@@ -1,5 +1,6 @@
 import { MicrofictionsContextProvider } from '@/contexts/microfictions.context'
 import { baseURL } from '../../lib/meta'
+import { imgMapUrl } from '../../lib/utils'
 import ImagePlaceHolder from '@/components/ImagePlaceHolder'
 import PinsList from '@/components/PinsList'
 import SideBar from '@/components/SideBar'
@@ -41,17 +42,29 @@ export async function generateMetadata({
   const pageTitleObj = chapitres.filter((elt) => {
     return elt.month === slug
   })
-  console.log('pageTitleObj => ', pageTitleObj)
+  // console.log('pageTitleObj => ', pageTitleObj)
   if (pageTitleObj.length < 1) {
     notFound()
   }
-
+  const defaultImgMapUrl = await imgMapUrl()
   const pageTitleMeta = pageTitleObj[0].title
   return {
     title: `Microfictions du ${pageTitleMeta}`,
     description: `Promenez-vous sur la place de la Réunion et découvrez un instant de vie passé, présent ou futur ✅ 16.51 Ouest`,
     alternates: {
       canonical: `${baseURL}/${slug}`,
+    },
+    openGraph: {
+      title: `Microfictions du ${pageTitleMeta}  @ 16.51 Ouest`,
+      description: `Promenez-vous sur la place de la Réunion et découvrez un instant de vie passé, présent ou futur ✅ 16.51 Ouest`,
+      url: `${baseURL}/${slug}`,
+      images: [
+        {
+          url: `${defaultImgMapUrl}`,
+          width: 1000,
+          height: 858,
+        },
+      ],
     },
   }
 }
@@ -130,7 +143,7 @@ export default async function showFictions({ params }) {
         <h1 className="grow-5 w-full">{pageTitle}</h1>
         <article className="img-placeholder image-wrapper lg:w-[1080px] mx-auto relative mix-blend-darken ">
           <ImagePlaceHolder />
-          <PinsList />
+          <PinsList items={microfictions} />
         </article>
         <SideBar />
       </section>

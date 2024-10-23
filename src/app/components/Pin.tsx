@@ -1,5 +1,3 @@
-'use client'
-import { useRef } from 'react'
 import {
   Tooltip,
   TooltipContent,
@@ -10,27 +8,8 @@ import Link from 'next/link'
 
 import { type PinPropsType } from '@/typescript/types'
 
-const Pin = ({ coordX, coordY, Date, Heure, dateFilter, id }: PinPropsType) => {
-  const pinClassName = useRef<HTMLAnchorElement | null>(null)
-
-  const isclassNameToRemove = pinClassName.current?.className
-    ? pinClassName.current?.className.includes('toRemove')
-    : ''
+const Pin = ({ coordX, coordY, Date, Heure, id }: PinPropsType) => {
   const pinYear = Date.split('/')[2]
-
-  let updatedClassName = 'pin'
-
-  if (dateFilter && dateFilter[0] < pinYear) {
-    updatedClassName = 'pin toRemove'
-  } else if (
-    dateFilter &&
-    dateFilter[0] >= pinYear &&
-    isclassNameToRemove !== false
-  ) {
-    updatedClassName = 'pin toDisplay'
-  } else {
-    updatedClassName = 'pin'
-  }
 
   return (
     <TooltipProvider delayDuration={200}>
@@ -39,8 +18,7 @@ const Pin = ({ coordX, coordY, Date, Heure, dateFilter, id }: PinPropsType) => {
           <Link
             scroll={false}
             href={`/microfiction/${id}`}
-            ref={pinClassName}
-            className={updatedClassName}
+            className="pin"
             style={{
               width: '10px',
               height: '10px',
