@@ -87,11 +87,12 @@ export async function generateMetadata({
       url: `${baseURL}/microfiction/${id}`,
       images: [
         {
-          url: `${defaultImgMapUrl}`, // Must be an absolute URL
+          url: `${defaultImgMapUrl}`,
           width: 1000,
           height: 858,
         },
       ],
+      type: 'website',
     },
   }
 }

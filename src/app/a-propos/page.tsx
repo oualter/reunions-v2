@@ -24,6 +24,7 @@ export const metadata: Metadata = {
         height: 858,
       },
     ],
+    type: 'website',
   },
 }
 

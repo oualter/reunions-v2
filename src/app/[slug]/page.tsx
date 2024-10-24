@@ -65,6 +65,7 @@ export async function generateMetadata({
           height: 858,
         },
       ],
+      type: 'website',
     },
   }
 }
