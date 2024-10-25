@@ -29,7 +29,10 @@
 // module.exports = nextConfig
 
 module.exports = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
+  // output: 'export',
+  // skipTrailingSlashRedirect: true,
+  // distDir: 'dist',
   // async headers() {
   //   return [
   //     {
@@ -52,18 +55,22 @@ module.exports = {
   //   ]
   // },
   images: {
+    // unoptimized: true,
     remotePatterns: [
       {
         // replace remote patterns when production
         // patterns for production just below
+        // protocol: 'https',
+        // hostname: 'strapi-reunion-pingenerator.onrender.com',
         protocol: 'https',
-        hostname: 'strapi-reunion-pingenerator.onrender.com',
+        hostname: 'res.cloudinary.com',
+        pathname:'/dlm2lmaxc/image/upload/**'
         // patterns for local dev just below
         // protocol: 'http',
         // hostname: '127.0.0.1',
         // port: '1337',
-        // keep line below for all environments
-        pathname: '/uploads/**',
+        // keep line below for all environments but cloudinary
+        // pathname: '/uploads/**',
       },
     ],
     // disableStaticImages: true,
