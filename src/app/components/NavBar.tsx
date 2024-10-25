@@ -92,6 +92,16 @@ export default function NavBar() {
           <NavLink href="/le-livre/">Le livre (PDF)</NavLink>
         </li> */}
         <li>
+          <NavLink
+            href="https://res.cloudinary.com/dlm2lmaxc/image/upload/v1729867016/places_de_la_reunion_ebook_c25c8c475d.pdf"
+            target="blank"
+          >
+            Télécharger
+            <br />
+            l&apos;ebook (PDF)
+          </NavLink>
+        </li>
+        <li>
           <NavLink href="/contact">Contact</NavLink>
         </li>
         <li className="a-propos">
