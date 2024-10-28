@@ -38,7 +38,7 @@ export default async function mentionsLegales() {
       const { Titre, Contenu } = body.data.attributes
       return (
         <section id="child-page">
-          <article className="generic-content lg:max-w-[700px] mx-auto my-6 h-full px-2 lg:px-0">
+          <article className="generic-content lg:max-w-[700px] mx-auto my-6 h-full px-4">
             <h1 className="text-2xl lg:text-4xl mb-4">{Titre}</h1>
             <BlockRendererClient content={Contenu} />
           </article>

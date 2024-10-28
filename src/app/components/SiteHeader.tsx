@@ -11,7 +11,7 @@ export default function SiteHeader() {
     <>
       {!isHomepage ? (
         <Link href="/" className="grow sm:basis-3/5">
-          <div className="uppercase whitespace-nowrap sm:text-6xl text-2xl text-zinc-600">
+          <div className="uppercase whitespace-nowrap sm:text-6xl text-2xl text-zinc-600 font-semibold">
             Places de la Réunion&nbsp;
             <div className="sm:text-3xl text-sm tracking-tighter">
               Heureusement que le ginkgo biloba
