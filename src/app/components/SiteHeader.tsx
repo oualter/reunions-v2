@@ -11,17 +11,17 @@ export default function SiteHeader() {
     <>
       {!isHomepage ? (
         <Link href="/" className="grow sm:basis-3/5">
-          <div className="uppercase whitespace-nowrap sm:text-6xl text-2xl">
+          <div className="uppercase whitespace-nowrap sm:text-6xl text-2xl text-zinc-600">
             Places de la Réunion&nbsp;
-            <div className="sm:text-3xl text-sm">
+            <div className="sm:text-3xl text-sm tracking-tighter">
               Heureusement que le ginkgo biloba
             </div>
           </div>
         </Link>
       ) : (
-        <h1 className="uppercase whitespace-nowrap sm:text-6xl text-2xl sm:grow sm:basis-2/3">
+        <h1 className="uppercase whitespace-nowrap sm:text-6xl text-2xl sm:grow sm:basis-2/3 text-zinc-600 font-semibold">
           Places de la Réunion&nbsp;
-          <div className="sm:text-3xl text-base">
+          <div className="sm:text-3xl text-base tracking-tighter">
             Heureusement que le ginkgo biloba
           </div>
         </h1>

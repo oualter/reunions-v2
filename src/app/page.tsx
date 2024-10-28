@@ -13,7 +13,7 @@ export default async function Home(props) {
 
   return (
     <MicrofictionsContextProvider value={{ microfictions }}>
-      <section className="map-page relative">
+      <section className="map-page relative flex">
         <article className="img-placeholder image-wrapper lg:w-[1080px] mx-auto relative mix-blend-darken ">
           <ImagePlaceHolder />
           <PinsList items={microfictions} />

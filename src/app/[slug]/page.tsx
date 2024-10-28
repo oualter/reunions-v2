@@ -140,8 +140,8 @@ export default async function showFictions({ params }) {
 
   return (
     <MicrofictionsContextProvider value={{ microfictionsFiltered }}>
-      <section className="map-page slug-page">
-        <h1 className="grow-5 w-full">{pageTitle}</h1>
+      <section className="map-page slug-page flex flex-wrap">
+        <h1 className="grow-1 w-full flex-none">{pageTitle}</h1>
         <article className="img-placeholder image-wrapper lg:w-[1080px] mx-auto relative mix-blend-darken ">
           <ImagePlaceHolder />
           <PinsList items={microfictions} />

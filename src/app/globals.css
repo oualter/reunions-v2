@@ -307,8 +307,9 @@ header nav#chapters > p {
 
 main#main-container section.map-page,
 #child-page {
-  display: flex;
-  flex-wrap: nowrap;
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* @apply flex-nowrap */
 }
 
 #sidebar-navigation {
