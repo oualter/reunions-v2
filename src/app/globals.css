@@ -308,18 +308,16 @@ header nav#chapters > p {
 main#main-container section.map-page,
 #child-page {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 #sidebar-navigation {
   overflow: hidden;
-  /* width: 150px; */
   height: auto;
   margin-top: 60px;
   z-index: 100;
   flex-basis: 170px;
   margin-right: 20px;
-  /* margin-right: 150px; */
 }
 .slug-page #sidebar-navigation {
   margin-top: -2rem;

@@ -3,19 +3,13 @@ import { useState } from 'react'
 import Link from 'next/link'
 import SideBarLink from '@/components/SideBarLink'
 import {
-  HiOutlineMenu,
-  HiOutlineX,
   HiOutlineChevronDown,
   HiOutlineChevronUp,
 } from 'react-icons/hi'
 import { chapitres } from '../data'
 
 export default function SideBar() {
-  const [isAsideOpen, setAsideOpen] = useState(true)
   const [isAsideMenuOpen, setIsAsideMenuOpen] = useState(true)
-  const toggleClass = () => {
-    setAsideOpen(!isAsideOpen)
-  }
   const handleSubMenu = () => {
     setIsAsideMenuOpen(!isAsideMenuOpen)
   }
@@ -23,13 +17,11 @@ export default function SideBar() {
   return (
     <aside
       id="sidebar-navigation"
-      className={
-        isAsideOpen ? 'open md:basis-1/3' : 'close relative md:basis-1/3'
-      }
+      className="hidden xl:block open"
       aria-label="main"
       // draggable="true"
     >
-      <ul className="hidden lg:flex h-auto md:w-full w-full bg-white xl:bg-transparent has-submenu">
+      <ul className="hidden lg:flex h-auto w-full bg-white xl:bg-transparent has-submenu">
         <li
           onClick={handleSubMenu}
           className={isAsideMenuOpen ? 'chapters open' : 'chapters close'}
