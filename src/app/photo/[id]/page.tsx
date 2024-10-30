@@ -14,7 +14,7 @@ export async function generateStaticParams() {
   const MFStaticParams = photosMF.map((post) => ({
     id: post.id.toString(),
   }))
-  return MFStaticParams
+  return await MFStaticParams
 }
 
 // const defaultImgMapUrl = await imgMapUrl()
