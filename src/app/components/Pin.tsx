@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import {
   Tooltip,
   TooltipContent,
@@ -12,10 +11,26 @@ import { type PinPropsType } from '@/typescript/types'
 
 const Pin = (props: PinPropsType) => {
   // console.log('pin props => ', props)
-  const photoThumbUrl = props.sourceThumbImg.url
-  const photoThumbAlt = props.Texte_alternatif
-  const { coordX, coordY, Date, Heure, id, isPhoto } = props
-
+  const {
+    coordX,
+    coordY,
+    Date,
+    Heure,
+    id,
+    isPhoto,
+    Texte_alternatif,
+    sourceThumbImg,
+  } = props
+  const photoThumbUrl = sourceThumbImg ? sourceThumbImg.url : undefined
+  // console.log('photoThumbUrl => ', photoThumbUrl)
+  const photoThumbAlt = Texte_alternatif ? Texte_alternatif : undefined
+  // const imageTag = (<Image
+  //               src={photoThumbUrl}
+  //               width={150}
+  //               height={150}
+  //               alt={photoThumbAlt}
+  //               className="relative thumb-img-popover"
+  //             />)
   const pinYear = Date ? Date.split('/')[2] : undefined
 
   return (
@@ -65,16 +80,15 @@ const Pin = (props: PinPropsType) => {
               </Link>
             </TooltipTrigger>
             <TooltipContent className="data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade text-violet11 select-none rounded-[4px] bg-white px-[15px] py-[10px] text-[15px] leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity]">
-              <Suspense fallback={<p>Bilo bilo bilo ...</p>}>
+              {photoThumbUrl && (
                 <Image
                   src={photoThumbUrl}
                   width={150}
                   height={150}
-                  priority={true}
                   alt={photoThumbAlt}
                   className="relative thumb-img-popover"
                 />
-              </Suspense>
+              )}
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
