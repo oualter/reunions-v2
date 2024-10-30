@@ -8,14 +8,14 @@ import { notFound } from 'next/navigation'
 
 export const dynamicParams = false
 
-export async function generateStaticParams() {
-  const photos = await GetPhotos()
-  const { photosMF } = await photos
-  const MFStaticParams = photosMF.map((post) => ({
-    id: post.id.toString(),
-  }))
-  return await MFStaticParams
-}
+// export async function generateStaticParams() {
+//   const photos = await GetPhotos()
+//   const { photosMF } = await photos
+//   const MFStaticParams = photosMF.map((post) => ({
+//     id: post.id.toString(),
+//   }))
+//   return await MFStaticParams
+// }
 
 // const defaultImgMapUrl = await imgMapUrl()
 
