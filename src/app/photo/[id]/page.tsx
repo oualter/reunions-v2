@@ -8,14 +8,15 @@ import { notFound } from 'next/navigation'
 
 export const dynamicParams = false
 
-// export async function generateStaticParams() {
-//   const photos = await GetPhotos()
-//   const { photosMF } = await photos
-//   const MFStaticParams = photosMF.map((post) => ({
-//     id: post.id.toString(),
-//   }))
-//   return await MFStaticParams
-// }
+export async function generateStaticParams() {
+  const photos = await GetPhotos()
+  const { photosMF } = await photos
+  const MFStaticParams = await photosMF.map((post) => ({
+    id: post.id.toString(),
+  }))
+  console.log('MFStaticParams => ', await MFStaticParams)
+  return await MFStaticParams
+}
 
 // const defaultImgMapUrl = await imgMapUrl()
 
@@ -31,9 +32,11 @@ export async function generateMetadata({
     return elt.id == id
   })!
   // console.log('thisPhoto => ', thisPhoto.sourceMainImg.url)
-const thisPhotoUrl = thisPhoto.sourceMainImg.url
-const thisPhotoAlt = (thisPhoto.Texte_alternatif !== '*' || undefined) ? thisPhoto.Texte_alternatif : 'Mais quelle belle place !'
-
+  const thisPhotoUrl = thisPhoto.sourceMainImg.url
+  const thisPhotoAlt =
+    thisPhoto.Texte_alternatif !== '*' || undefined
+      ? thisPhoto.Texte_alternatif
+      : 'Mais quelle belle place !'
 
   if (!thisPhoto) notFound()
   // let isGingkoBiloba = thisMF.Texte_microfiction[0]?.includes('biloba')
