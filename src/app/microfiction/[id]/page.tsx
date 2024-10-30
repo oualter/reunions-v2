@@ -1,4 +1,3 @@
-import { MicrofictionsContextProvider } from '@/contexts/microfictions.context'
 import { baseURL } from '../../../lib/meta'
 import { imgMapUrl } from '../../../lib/utils'
 import ImagePlaceHolder from '@/components/ImagePlaceHolder'
@@ -11,7 +10,6 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 export const dynamicParams = false
-export const dynamic = 'force-static'
 
 function generateDateContent(dateToCompute: string): string {
   let MFDay = dateToCompute.split('/')[0]
@@ -103,11 +101,13 @@ export default async function MicrofictionPage({
   params: { id: number }
 }) {
   const microF = await GetMicroFictions()
+  // console.log('microF => ', microF)
   const { microfictions } = microF
   const { id } = params
   const thisMF = microfictions.find((elt) => {
     return elt.id == id
   })!
+
 
   const { Heure, Texte_microfiction, GingkoBiloba } = thisMF
   const finalDateToDisplay = generateDateContent(thisMF.Date)
@@ -115,7 +115,7 @@ export default async function MicrofictionPage({
   const linkToShare = '/microfiction/' + thisMF.id
 
   return (
-    <MicrofictionsContextProvider value={{ isGingkoBiloba: GingkoBiloba }}>
+    <>
       <Modal isParallelRoute={true}>
         <div>{finalDateToDisplay}</div>
         <div>{Heure}</div>
@@ -125,8 +125,8 @@ export default async function MicrofictionPage({
         <div>{GingkoBiloba}</div>
         <div>{linkToShare}</div>
       </Modal>
-      <Confettis />
+      <Confettis isGingkoBiloba={GingkoBiloba} />
       <ImagePlaceHolder />
-    </MicrofictionsContextProvider>
+    </>
   )
 }

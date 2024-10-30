@@ -6,7 +6,7 @@ type MicrofictionsContextType = {
   pins: PinType[]
   defaultpins: PinType[] | null
   GingkoBiloba: boolean
-  isGingkoBiloba: boolean
+  // isGingkoBiloba: boolean
   isShowConfettis: boolean
   initConfettis: boolean
   selectedMicrofictions: PinType[]
@@ -16,7 +16,7 @@ type MFContextPropsType = {
   value: {
     microfictionsFiltered?: []
     microfictions?: []
-    isGingkoBiloba?: boolean
+    // isGingkoBiloba?: boolean
     GingkoBiloba?: boolean
   }
   children: React.ReactNode
@@ -28,9 +28,9 @@ const MicrofictionsContext = createContext<MicrofictionsContextType | null>(
 export default MicrofictionsContext
 
 const MicrofictionsContextProvider = (props: MFContextPropsType) => {
-  let [isGingkoBiloba, setIsGingkoBiloba] = useState(
-    props.value?.isGingkoBiloba
-  )
+  // let [isGingkoBiloba, setIsGingkoBiloba] = useState(
+  //   props.value?.isGingkoBiloba
+  // )
   let [GingkoBiloba, setGingkoBiloba] = useState(false)
   let [isShowConfettis, setIsShowConfettis] = useState(false)
   let [initConfettis, setInitConfettis] = useState(false)
@@ -41,11 +41,11 @@ const MicrofictionsContextProvider = (props: MFContextPropsType) => {
     ? props.value.microfictionsFiltered
     : props.value?.microfictions
 
-  const isGingkoBilobaValue = props.value?.isGingkoBiloba
+  // const isGingkoBilobaValue = props.value?.isGingkoBiloba
 
-  useEffect(() => {
-    setIsGingkoBiloba(isGingkoBiloba)
-  }, [])
+  // useEffect(() => {
+  //   setIsGingkoBiloba(isGingkoBiloba)
+  // }, [])
 
   return (
     <MicrofictionsContext.Provider
@@ -54,7 +54,7 @@ const MicrofictionsContextProvider = (props: MFContextPropsType) => {
           selectedMicrofictions.length > 0 ? selectedMicrofictions : mfArray,
         defaultpins: mfArray,
         GingkoBiloba,
-        isGingkoBiloba,
+        // isGingkoBiloba,
         isShowConfettis,
         initConfettis,
         selectedMicrofictions: mfArray,

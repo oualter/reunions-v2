@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useMemo } from 'react'
-import { useMicrofictionsContext } from '@/contexts/microfictions.context'
+// import { useMicrofictionsContext } from '@/contexts/microfictions.context'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import {
   type Container,
@@ -11,17 +11,14 @@ import {
 import { loadAll } from '@tsparticles/all'
 
 type ConfettisType = {
-  isShowConfettis: boolean
-  initConfettis: boolean
-  isGingkoBiloba: boolean
+  isShowConfettis?: boolean
+  initConfettis?: boolean
+  isGingkoBiloba?: boolean
 }
 
 // console.log('je suis le fichier confettis.tsx')
 
-const Confettis = () => {
-  let { isShowConfettis, isGingkoBiloba, initConfettis }: ConfettisType =
-    useMicrofictionsContext()
-
+const Confettis = ({ isGingkoBiloba }) => {
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadAll(engine)

@@ -17,6 +17,24 @@ export type PinAttributesType = {
   pingenerator: string
   GingkoBiloba: boolean
   Texte_microfiction: string[]
+  Coordonnees?: string
+}
+export type PinPhotosType = {
+  id?: number
+  createdAt: string
+  Texte_alternatif: string
+  url: string
+  Coordonnees: string
+  Source: {
+    data: {
+      attributes: {
+        formats: {
+          thumbnail: {}
+          large: {}
+        }
+      }
+    }
+  }
 }
 
 export type PinType = {
@@ -35,14 +53,15 @@ export type PinPropsType = {
   key: number
   coordX: number
   coordY: number
-  Date: string
+  Date?: string
   Heure?: string
   // Texte_mf?: string[]
-  GingkoBiloba: boolean
+  GingkoBiloba?: boolean
   // dateFilter?: string[]
   slug?: string
   id?: number | string
-  Texte_microfiction: [string]
+  Texte_microfiction?: string[]
+  isPhoto?: boolean
 }
 
 export type NamedNodeMap = {

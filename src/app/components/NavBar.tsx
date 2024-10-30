@@ -68,9 +68,9 @@ export default function NavBar() {
             ))}
           </ul>
         </li>
-        {/* <li>
-          <NavLink href="/contact">Photos</NavLink>
-        </li> */}
+        <li>
+          <NavLink href="/photographies">Photos</NavLink>
+        </li>
         <li
           onClick={handleSubMenuModeEmploi}
           className={isMenuModeEmploiOpen ? 'open' : 'close'}

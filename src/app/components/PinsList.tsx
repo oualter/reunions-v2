@@ -1,15 +1,20 @@
 'use client'
 import { useRef } from 'react'
-import { useMicrofictionsContext } from '@/contexts/microfictions.context'
 import Pin from '@/components/Pin'
+import type { PinAttributesType } from '@/typescript/types'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 
-const PinsList = ({ items }) => {
-  // console.log('Pinlist props => ', items)
+const PinsList = ({
+  items,
+  pintype,
+}: {
+  items: PinAttributesType[]
+  pintype?: 'photos'
+}) => {
+  // console.log('items pinlist => ', items)
 
   const animContainer = useRef<HTMLDivElement>(null)
-  const { pins } = useMicrofictionsContext()
 
   const zeroOneArray1 = Math.round(Math.random())
   const zeroOneArray2 = Math.round(Math.random())
@@ -42,14 +47,33 @@ const PinsList = ({ items }) => {
 
   return (
     <div ref={animContainer}>
-      {pins &&
-        pins.map((elt) => {
+      {items &&
+        pintype !== 'photos' &&
+        items.map((elt) => {
           const { id, pingenerator } = elt
           if (!pingenerator) return
           const posX = pingenerator ? parseInt(pingenerator.split(',')[0]) : 0
           const posY = pingenerator ? parseInt(pingenerator.split(',')[1]) : 0
+          const key = posX * posY * id * Math.random()
+          return <Pin key={key} coordX={posX} coordY={posY} {...elt} />
+        })}
+      {items &&
+        pintype === 'photos' &&
+        items.map((elt) => {
+          // console.log('PHOTO MAP ELT => ', elt)
+          const { id, Coordonnees } = elt
+          if (!Coordonnees) return
+          const posX = Coordonnees ? parseInt(Coordonnees.split(',')[0]) : 0
+          const posY = Coordonnees ? parseInt(Coordonnees.split(',')[1]) : 0
+          const key = posX * posY * id * Math.random()
           return (
-            <Pin key={posX * posX * id} coordX={posX} coordY={posY} {...elt} />
+            <Pin
+              key={key}
+              coordX={posX}
+              coordY={posY}
+              isPhoto={true}
+              {...elt}
+            />
           )
         })}
     </div>
