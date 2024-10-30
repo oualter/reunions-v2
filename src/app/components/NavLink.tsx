@@ -17,7 +17,7 @@ export default function NavLink({
 }: LinkPropsDownloadExtendedType) {
   const pathname = usePathname()
   if (href === pathname) {
-    return <span>{children}</span>
+    return <strong>{children}</strong>
   }
   let linkHTML =
     target === 'blank' ? (
