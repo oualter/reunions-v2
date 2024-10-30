@@ -62,6 +62,10 @@ export type PinPropsType = {
   id?: number | string
   Texte_microfiction?: string[]
   isPhoto?: boolean
+  Texte_alternatif?: string
+  sourceThumbImg?: {
+    url: string
+  }
 }
 
 export type NamedNodeMap = {

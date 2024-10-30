@@ -491,25 +491,27 @@ main > *:not(section) {
 
 .modal {
   background-color: #bababa;
-  /* padding: 2rem;
-  border-radius: 4px; */
   border: none;
   box-shadow: 0 0 10px 0 #181817;
   max-width: 50rem;
   max-height: 90vh;
   width: 100%;
-  /* border: 2px solid red; */
   overflow: hidden;
 }
 
 .fullscreen-image {
   width: 100%;
-  
 }
 
 .fullscreen-image img {
   /* width: 100%;
   max-height: 80vh;  */
+  height: auto;
+  object-fit: cover;
+}
+
+.thumb-img-popover {
+  width: 100px;
   height: auto;
   object-fit: cover;
 }
