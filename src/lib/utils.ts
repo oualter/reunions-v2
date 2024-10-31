@@ -1,5 +1,5 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -13,11 +13,18 @@ export const imgMapUrl = async () => {
       `CMS returned ${defaultImgMap.status} for ${CMS_URL}/pingenerator/mapimage`
     )
   }
+
   const defaultImgMapJson = await defaultImgMap.json()
+
   let defaultImgMapUrl = await defaultImgMapJson.imageToPinOnUrl
+
+  const defaultImgMapFileName = await defaultImgMapUrl.split('/')[
+    defaultImgMapUrl.split('/').length - 1
+  ]
   if (defaultImgMapUrl.includes('localhost')) {
     defaultImgMapUrl = defaultImgMapUrl.replace('localhost', '127.0.0.1')
   }
   // console.log('UTILS defaultImgMapUrl => ', defaultImgMapUrl)
-  return defaultImgMapUrl
+  // return defaultImgMapUrl
+  return defaultImgMapFileName
 }

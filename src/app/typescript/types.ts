@@ -64,7 +64,10 @@ export type PinPropsType = {
   isPhoto?: boolean
   Texte_alternatif?: string
   sourceThumbImg?: {
-    url: string
+    // url?: string
+    // name?: string
+    hash?: string
+    ext?: string
   }
 }
 

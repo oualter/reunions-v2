@@ -31,8 +31,8 @@ export async function generateMetadata({
   const thisPhoto = photosMF.find((elt) => {
     return elt.id == id
   })!
-  // console.log('thisPhoto => ', thisPhoto.sourceMainImg.url)
-  const thisPhotoUrl = thisPhoto.sourceMainImg.url
+
+  const photoUrl = thisPhoto.sourceMainImg.url
   const thisPhotoAlt =
     thisPhoto.Texte_alternatif !== '*' || undefined
       ? thisPhoto.Texte_alternatif
@@ -62,7 +62,7 @@ export async function generateMetadata({
       url: `${baseURL}/photo/${id}`,
       images: [
         {
-          url: `${thisPhotoUrl}`,
+          url: `${photoUrl}`,
           width: 1000,
           height: 858,
         },
@@ -84,8 +84,9 @@ export default async function PhotoModal({
     return elt.id == id
   })!
 
-  const photoUrl = thisPhoto.sourceMainImg.url
-  const PhotoTitle = thisPhoto.Texte_alternatif
+const PhotoTitle = thisPhoto.Texte_alternatif
+const photoUrl =
+  '/' + thisPhoto.sourceMainImg.hash + thisPhoto.sourceMainImg.ext
 
   // const linkToShare = '/photo/' + thisPhoto.id
 

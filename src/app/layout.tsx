@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children, modal }: LayoutProps) {
   return (
     <html lang="fr">
-      <body className="container flex flex-col min-h-screen mx-auto pb-2">
+      <body className="container flex flex-col min-h-dvh lg:min-h-screen mx-auto pb-2">
         <header className="sticky top-0 w-full sm:py-3 py-1 sm:px-9 px-2 shrink">
           <div className="sm:flex sm:justify-stretch ">
             <SiteHeader />

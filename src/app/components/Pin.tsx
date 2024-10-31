@@ -21,16 +21,14 @@ const Pin = (props: PinPropsType) => {
     Texte_alternatif,
     sourceThumbImg,
   } = props
-  const photoThumbUrl = sourceThumbImg ? sourceThumbImg.url : undefined
-  // console.log('photoThumbUrl => ', photoThumbUrl)
+
+  const photoThumbHash = sourceThumbImg ? sourceThumbImg.hash : undefined
+  const photoThumbExt = sourceThumbImg ? sourceThumbImg.ext : undefined
+  const photoThumbSrc = sourceThumbImg
+    ? `/${photoThumbHash}${photoThumbExt}`
+    : undefined
   const photoThumbAlt = Texte_alternatif ? Texte_alternatif : undefined
-  // const imageTag = (<Image
-  //               src={photoThumbUrl}
-  //               width={150}
-  //               height={150}
-  //               alt={photoThumbAlt}
-  //               className="relative thumb-img-popover"
-  //             />)
+
   const pinYear = Date ? Date.split('/')[2] : undefined
 
   return (
@@ -80,9 +78,9 @@ const Pin = (props: PinPropsType) => {
               </Link>
             </TooltipTrigger>
             <TooltipContent className="data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade text-violet11 select-none rounded-[4px] bg-white px-[15px] py-[10px] text-[15px] leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity]">
-              {photoThumbUrl && (
+              {photoThumbSrc && (
                 <Image
-                  src={photoThumbUrl}
+                  src={photoThumbSrc}
                   width={150}
                   height={150}
                   alt={photoThumbAlt}

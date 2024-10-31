@@ -2,7 +2,8 @@ import Image from 'next/image'
 import { imgMapUrl } from '../../lib/utils'
 
 export default async function ImagePlaceHolder(props) {
-  const defaultImgMapUrl = await imgMapUrl()
+  let defaultImgMapUrl = await imgMapUrl()
+  defaultImgMapUrl = '/'+defaultImgMapUrl
   return (
     <Image
       src={defaultImgMapUrl}

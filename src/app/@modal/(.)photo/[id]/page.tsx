@@ -24,17 +24,17 @@ export default async function PhotoModal({
     return elt.id == id
   })!
 
-
-  const photoUrl = thisPhoto.sourceMainImg.url
   const PhotoTitle = thisPhoto.Texte_alternatif
+  const photoUrl =
+    '/' + thisPhoto.sourceMainImg.hash + thisPhoto.sourceMainImg.ext
 
   // const linkToShare = '/photo/' + thisPhoto.id
 
   // await new Promise((resolve) => setTimeout(resolve, 3000))
   return (
-      <Modalphoto>
-        {PhotoTitle}
-        {photoUrl}
-      </Modalphoto>
+    <Modalphoto>
+      {PhotoTitle}
+      {photoUrl}
+    </Modalphoto>
   )
 }

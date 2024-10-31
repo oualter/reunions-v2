@@ -56,6 +56,8 @@ module.exports = {
   // },
   images: {
     // unoptimized: true,
+    loader: 'custom',
+    loaderFile: './src/app/my-loader.ts',
     remotePatterns: [
       {
         // replace remote patterns when production
@@ -64,7 +66,7 @@ module.exports = {
         // hostname: 'strapi-reunion-pingenerator.onrender.com',
         protocol: 'https',
         hostname: 'res.cloudinary.com',
-        pathname:'/dlm2lmaxc/image/upload/**'
+        pathname: '/dlm2lmaxc/image/upload/**',
         // patterns for local dev just below
         // protocol: 'http',
         // hostname: '127.0.0.1',
