@@ -7,6 +7,7 @@ import {
   Transition,
   TransitionChild,
 } from '@headlessui/react'
+import { displayContentWithLBFunction } from '../../lib/utils'
 import xss from 'xss'
 import { TwitterShare } from 'react-share-kit'
 import { useRouter } from 'next/navigation'
@@ -47,12 +48,8 @@ const Modal = ({
   const displayContent = children[2].props.children
     ? children[2].props.children.props.content
     : null
+  // console.log('displayContent => ', displayContent)
 
-  // remplacer les retours à la ligne par une balise <br />
-  const displayContentWithLBFunction = (text) => {
-    const contentWithLB = text.replaceAll('\n', '<br />')
-    return contentWithLB
-  }
   // Au cas où le displayContent soit un tableau à plus d'1 élément, on joint chaque élément entrecoupé d'un <br />
   const contentToDisplay = displayContentWithLBFunction(
     displayContent.join('<br />')

@@ -28,3 +28,9 @@ export const imgMapUrl = async () => {
   // return defaultImgMapUrl
   return defaultImgMapFileName
 }
+
+// remplacer les retours à la ligne par une balise <br />
+export const displayContentWithLBFunction = (obj: string) => {
+  const contentWithLB = obj.replaceAll('\n', '<br />')
+  return contentWithLB
+}

@@ -515,3 +515,10 @@ main > *:not(section) {
   height: auto;
   object-fit: cover;
 }
+
+/* hack the linebreak bug on legal mentions page */
+.legalmentions *:nth-child(4),
+.legalmentions *:nth-child(5),
+.legalmentions *:nth-child(6) {
+  margin: 0;
+}

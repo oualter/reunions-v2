@@ -1,5 +1,5 @@
 import SideBar from '@/components/SideBar'
-import BlockRendererClient from '../components/BlockRendererClient'
+import BlockRendererClient from '@/components/BlockRendererClient'
 import { baseURL } from '../../lib/meta'
 import { imgMapUrl } from '../../lib/utils'
 import type { Metadata } from 'next'
@@ -36,9 +36,10 @@ export default async function mentionsLegales() {
     if (response.ok) {
       const body = await response.json()
       const { Titre, Contenu } = body.data.attributes
+
       return (
         <section id="child-page">
-          <article className="generic-content lg:max-w-[700px] mx-auto my-6 h-full px-4">
+          <article className="generic-content lg:max-w-[700px] mx-auto my-6 h-full px-4 legalmentions">
             <h1 className="text-2xl lg:text-4xl mb-4">{Titre}</h1>
             <BlockRendererClient content={Contenu} />
           </article>

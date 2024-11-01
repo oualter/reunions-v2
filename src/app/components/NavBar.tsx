@@ -84,7 +84,7 @@ export default function NavBar() {
             </p>
             <p>
               Vous pouvez aussi jouer avec le temps, glisser de saison en
-              saison, de mois en mois, grâce à l&apos;onglet sur la gauche : aux
+              saison, de mois en mois, grâce à l&apos;onglet sur le coté : aux
               hivers préhistoriques répondront alors les hivers futuristes, et
               les canicules d&apos;aujourd&apos;hui s&apos;entremêleront aux
               voix estivales du passé.

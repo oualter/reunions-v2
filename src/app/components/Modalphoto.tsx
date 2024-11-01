@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { TwitterShare } from 'react-share-kit'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
@@ -37,15 +37,20 @@ const Modalphoto = ({
 
   return (
     <div className="modal-backdrop" onClick={close}>
-      <dialog className="modal" open>
+      <dialog className="modal relative" open>
         <div className="fullscreen-image">
-          <Image
-            src={modalPhotoUrl}
-            width={1080}
-            height={927}
-            alt={modalPhotoTitle}
-            className="relative"
-          />
+          <Suspense fallback={<p>Bilo bilo bilo...</p>}>
+            <Image
+              src={modalPhotoUrl}
+              width={1080}
+              height={927}
+              alt={modalPhotoTitle}
+              className="relative"
+            />
+            <h1 className="absolute z-2 bottom-0 px-4 py-2 bg-zinc-50/[0.5] w-full text-2xl font-medium">
+              {modalPhotoTitle}
+            </h1>
+          </Suspense>
         </div>
       </dialog>
     </div>

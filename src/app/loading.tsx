@@ -9,6 +9,7 @@ export default function Loading() {
         alt="Chargement en cours"
         height={200}
         width={200}
+        unoptimized
         className="block mx-auto"
       />
     </article>
