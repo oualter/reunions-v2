@@ -4,7 +4,11 @@
     // "useDefineForClassFields": true,
     // "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "target": "es2020",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     // "strict": true,
@@ -23,7 +27,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/app/*"]
+      "@/*": [
+        "./src/app/*"
+      ]
     }
     // "baseUrl": "src/*",
     // "paths": {
@@ -42,12 +48,13 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/Modal.tsx.backup"
-, "src/app/components/share.jsx"  ],
+    "src/app/components/Modal.tsx.backup",
+    "src/app/components/share.jsx",
+    "dist/types/**/*.ts"
+, "src/app/not-found.tsx"  ],
   "exclude": [
     "node_modules",
     "src/app/components/Modal.tsx.backup"
-
     // "src/app/components/Modal.tsx",
     // "src/app/components/Pin.tsx"
   ]
