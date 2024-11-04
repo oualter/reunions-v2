@@ -493,9 +493,10 @@ main > *:not(section) {
   background-color: #bababa;
   border: none;
   box-shadow: 0 0 10px 0 #181817;
-  max-width: 45rem;
+  max-width: 43rem;
   max-height: 95vh;
-  width: 100%;
+  width: auto;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -504,6 +505,7 @@ main > *:not(section) {
 }
 .paysage {
   max-width: 70rem;
+  height: auto;
 }
 
 .fullscreen-image img {
