@@ -89,12 +89,17 @@ export default async function PhotoModal({
   const photoUrl =
     '/' + thisPhoto.sourceMainImg.hash + thisPhoto.sourceMainImg.ext
 
+  const photoOrientation =
+    thisPhoto.sourceMainImg.width / thisPhoto.sourceMainImg.height < 1
+      ? 'portrait'
+      : 'paysage'
   // const linkToShare = '/photo/' + thisPhoto.id
 
   return (
     <Modalphoto>
       {PhotoTitle}
       {photoUrl}
+      {photoOrientation}
     </Modalphoto>
   )
 }
