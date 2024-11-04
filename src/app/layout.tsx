@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   description: `Objet multimédia issu de l'atelier d'écriture "écrire, explorer" - Cartographie de microfictions se déroulant place de la Réunion dans le 20e arrondissement de Paris`,
   // robots: 'noindex, nofollow',
   referrer: 'origin-when-cross-origin',
+  metadataBase: new URL(baseURL),
   keywords: [
     '16.51 Ouest',
     "Atelier d'écriture",

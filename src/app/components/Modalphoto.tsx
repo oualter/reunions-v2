@@ -34,10 +34,12 @@ const Modalphoto = ({
 
   const modalPhotoTitle = children[0]
   const modalPhotoUrl = children[1]
-
+  const photoOrientation = children[2]
+  const dialogClassName =
+    photoOrientation == 'paysage' ? 'modal relative paysage' : 'modal relative'
   return (
     <div className="modal-backdrop" onClick={close}>
-      <dialog className="modal relative" open>
+      <dialog className={dialogClassName} open>
         <div className="fullscreen-image">
           <Suspense fallback={<p>Bilo bilo bilo...</p>}>
             <Image

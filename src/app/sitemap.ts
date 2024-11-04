@@ -1,14 +1,21 @@
 import type { MetadataRoute } from 'next'
 import { baseURL } from '../lib/meta'
-import { GetMicroFictions } from '../lib/microfictions'
+import { GetMicroFictions, GetPhotos } from '../lib/microfictions'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const microF = await GetMicroFictions()
-  const { microfictions } = microF
+  const { microfictions } = await microF
   // console.log('sitemap microfictions => ', microfictions)
-  const microfictionsEntries : MetadataRoute.Sitemap = microfictions.map(({id})=>
-  ({
-    url: `${baseURL}/microfiction/${id}`
+  const microfictionsEntries: MetadataRoute.Sitemap = microfictions.map(
+    ({ id }) => ({
+      url: `${baseURL}/microfiction/${id}`,
+    })
+  )
+
+  const photos = await GetPhotos()
+  const { photosMF } = await photos
+  const photosEntries: MetadataRoute.Sitemap = photosMF.map(({ id }) => ({
+    url: `${baseURL}/photos/${id}`,
   }))
 
   return [
@@ -109,5 +116,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     ...microfictionsEntries,
+    ...photosEntries,
   ]
 }

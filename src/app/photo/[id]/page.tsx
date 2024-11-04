@@ -14,7 +14,7 @@ export async function generateStaticParams() {
   const MFStaticParams = await photosMF.map((post) => ({
     id: post.id.toString(),
   }))
-  console.log('MFStaticParams => ', await MFStaticParams)
+  // console.log('MFStaticParams photos => ', await MFStaticParams)
   return await MFStaticParams
 }
 
@@ -54,12 +54,12 @@ export async function generateMetadata({
     title: `Photographie ${id}, place de la Réunion, Paris 20`,
     description: `${thisPhotoAlt}`,
     alternates: {
-      canonical: `${baseURL}/photo/${id}`,
+      canonical: `/photo/${id}`,
     },
     openGraph: {
       title: `Photographie ${id}, place de la Réunion, Paris 20`,
       description: `${thisPhotoAlt}`,
-      url: `${baseURL}/photo/${id}`,
+      url: `/photo/${id}`,
       images: [
         {
           url: `${photoUrl}`,
@@ -84,9 +84,10 @@ export default async function PhotoModal({
     return elt.id == id
   })!
 
-const PhotoTitle = thisPhoto.Texte_alternatif
-const photoUrl =
-  '/' + thisPhoto.sourceMainImg.hash + thisPhoto.sourceMainImg.ext
+  // console.log('thisPhoto => ', thisPhoto)
+  const PhotoTitle = thisPhoto.Texte_alternatif
+  const photoUrl =
+    '/' + thisPhoto.sourceMainImg.hash + thisPhoto.sourceMainImg.ext
 
   // const linkToShare = '/photo/' + thisPhoto.id
 
