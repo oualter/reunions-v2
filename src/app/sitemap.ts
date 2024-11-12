@@ -15,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const photos = await GetPhotos()
   const { photosMF } = await photos
   const photosEntries: MetadataRoute.Sitemap = photosMF.map(({ id }) => ({
-    url: `${baseURL}/photos/${id}`,
+    url: `${baseURL}/photo/${id}`,
   }))
 
   return [
