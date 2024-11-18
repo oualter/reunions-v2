@@ -331,8 +331,12 @@ form > div {
   @apply flex flex-col gap-2;
 }
 input,
-textarea {
+textarea,
+button {
   @apply shadow-md px-6 py-2 border border-slate-300;
+}
+button {
+  @apply max-w-32 mx-auto bg-slate-500 text-white
 }
 
 #headlessui-portal-root {

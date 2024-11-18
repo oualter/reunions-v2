@@ -1,5 +1,4 @@
-import SideBar from '@/components/SideBar'
-import Contact from './../components/ContactForm'
+import ContactForm from '@/components/contact/ContactForm'
 import { baseURL } from '../../lib/meta'
 import { imgMapUrl } from '../../lib/utils'
 import type { Metadata } from 'next'
@@ -26,12 +25,13 @@ export const metadata: Metadata = {
     type: 'website',
   },
 }
+
 export default function contact() {
   return (
     <section id="child-page">
       <article className="generic-content lg:max-w-[700px] w-full h-full mx-auto my-6 px-4">
         <h1 className="text-2xl lg:text-4xl mb-4">Contact</h1>
-        <Contact />
+        <ContactForm />
       </article>
     </section>
   )
