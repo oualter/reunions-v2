@@ -46,7 +46,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const mailOptions: Mail.Options = {
       from: process.env.MY_EMAIL,
       to: process.env.MY_EMAIL,
-      // cc: process.env.CC_EMAIL_MESSAGE,
+      cc: process.env.CC_EMAIL_MESSAGE,
       subject: `|| GINKGO BILOBA || Message de ${name} (${email})`,
       text: message,
     }
